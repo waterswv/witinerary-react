@@ -3,6 +3,8 @@ import './App.css';
 import NavBar from './NavBar';
 import Panel from './Panel';
 import Map from './Map';
+import Filters from './Filters';
+import ThirdParty from './ThirdParty';
 
 
 class App extends Component {
@@ -13,6 +15,8 @@ class App extends Component {
           <NavBar />
           <Panel />
           <Map />
+          <Filters />
+          <ThirdParty />
 
       </div>
 
