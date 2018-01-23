@@ -7,7 +7,7 @@
         grid-template-areas:
         "navbar navbar navbar navbar navbar navbar"
         ". trip-title map map filters ."
-        ". vineyards map map 3rd-party .";
+        ". vineyards map map third-party .";
 
     	}
 
