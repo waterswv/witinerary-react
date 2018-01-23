@@ -1,0 +1,17 @@
+/*  GitHub Gravatar Image URL    https://avatars.githubusercontent.com/waterswv?s=50    Update 's=' to change size*/
+.panel {
+  grid-area: trip-title;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-row-gap: 10px;
+  grid-template-areas:
+    "location"
+    "dates"
+    "avatars";
+  text-align: center;
+
+}
+.panel .location {
+
+}
