@@ -10,3 +10,13 @@
         ". vineyards map map 3rd-party .";
 
     	}
+
+.map, .directions img {
+  height: 400px;
+  width: 400px;
+  /* These 3 lines of CSS Center an IMG in a DIV  */
+  border: none;
+  display: block;
+  margin: 0 auto;
+  /* These 3 lines of CSS Center an IMG in a DIV  */
+}
