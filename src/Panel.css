@@ -1,4 +1,9 @@
-/*  GitHub Gravatar Image URL    https://avatars.githubusercontent.com/waterswv?s=50    Update 's=' to change size*/
+/*  GitHub Gravatar Image URL
+    https://avatars.githubusercontent.com/waterswv?s=50
+   or
+    https://github.com/waterswv.png?size=40
+   Update 's=' | size=50 to change size
+*/
 .panel {
   grid-area: trip-title;
   display: grid;

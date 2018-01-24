@@ -1,4 +1,7 @@
 
+div {
+  border: dashed green;
+}
 .wrapper {
     		display: grid;
     		grid-template-columns: 5% 20% 25% 25% 20% 5%;
@@ -11,8 +14,8 @@
     	}
 
 .map, .directions img {
-  height: 400px;
-  width: 400px;
+
+  max-width: 100%;
   /* These 3 lines of CSS Center an IMG in a DIV  */
   border: none;
   display: block;

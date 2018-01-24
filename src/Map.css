@@ -1,3 +1,40 @@
 .map {
   grid-area: map;
+
+}
+
+        /* These create a circle out of a blank div */
+        /* .circle {
+        	border: 2px solid #666666;
+        	border-radius: 50%;
+        	opacity: 0.6;
+        	width: 24px;
+        	height: 24px;
+
+        }
+        .circle.filled {
+        	background-color: #666666;
+        } */
+.map-card {
+  border: solid black;
+}
+.map-tabs {
+  border-top: solid black;
+}
+.map-tabs > .circles {
+    display: inline-block;
+    display: -moz-inline-box;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    margin-left: 2%;
+    width: 32%;
+    text-align: center;
+}
+
+.map-tabs > .circles:first-child {
+    margin-left: 0;
+    border-right: solid black;
+}
+.map-tabs > .circles:last-child {
+    border-left: solid black;
 }
