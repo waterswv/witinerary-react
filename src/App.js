@@ -5,6 +5,7 @@ import Panel from './Panel';
 import Map from './Map';
 import Filters from './Filters';
 import ThirdParty from './ThirdParty';
+import Vineyards from './Vineyards';
 
 
 class App extends Component {
@@ -17,6 +18,8 @@ class App extends Component {
           <Map />
           <Filters />
           <ThirdParty />
+          <Vineyards />
+          
 
       </div>
 

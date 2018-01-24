@@ -1,0 +1,18 @@
+.vineyards {
+  grid-area: vineyards;
+  clear: both;
+  font-size: 12px;
+  max-height: 75px;
+}
+.vineyards p {
+  max-height: 10;
+}
+button{
+  float: right;
+
+}
+.tasting-room {
+
+}
+.wine-club {
+}
