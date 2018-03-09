@@ -10,7 +10,7 @@ class Vineyards extends Component {
         <p className='vineyard-title'>Unti Wines</p>
         <p className='tasting-room'>Open: Wed - Sun 10AM - 5PM</p>
       </div>
-      
+
 
   );
   }

@@ -22,3 +22,19 @@ div {
   margin: 0 auto;
   /* These 3 lines of CSS Center an IMG in a DIV  */
 }
+
+.hero-image{
+    background-image: url('/images/landscape-nature-grass-marsh-light-sun-535861-pxhere.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 50%;
+  }
+
+.home-hero{
+  color: white;
+  /*font: bold;*/
+  font-size: 30px;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
