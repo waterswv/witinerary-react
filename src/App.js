@@ -10,18 +10,11 @@ import Vineyards from './Vineyards';
 
 class App extends Component {
   render() {
+    let style = {height: '100vh'}
     return (
-
-      <div className="wrapper">
-          <NavBar />
-          <Panel />
-          <Map />
-          <Filters />
-          <ThirdParty />
-          <Vineyards />
-          
-
-      </div>
+        <div className="hero-image">
+          <p className="home-hero" style={style}>Get lost amongst the Vines. <br></br> Wine country on your schedule </p>
+        </div>
 
   );
   }

@@ -6,13 +6,15 @@ class Panel extends Component {
     return (
 
       <div className='panel'>
-        <div className='location'>3 Days in Napa Valley</div>
-        <div className='dates'>Jan 29th - Feb 1st</div>
-        <div className='avatars'>
+        <div className='trip-title'>3 Days in Napa Valley <br></br>
+        <span className='avatars'>Jan 29th - Feb 1st</span>
+
+        <div className='dates'>
           <img src='https://avatars.githubusercontent.com/waterswv?s=50' alt='GitHub Avatar'></img>
           <img src='https://avatars.githubusercontent.com/waterswv?s=50' alt='GitHub Avatar'></img>
           <img src='https://avatars.githubusercontent.com/waterswv?s=50' alt='GitHub Avatar'></img>
         </div>
+      </div>
       </div>
 
   );
