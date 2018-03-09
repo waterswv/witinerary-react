@@ -1,6 +1,6 @@
 
 div {
-  border: dashed green;
+
 }
 .wrapper {
     		display: grid;
@@ -28,7 +28,7 @@ div {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 50%;
+
   }
 
 .home-hero{
