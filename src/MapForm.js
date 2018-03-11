@@ -33,6 +33,7 @@ class MapForm extends Component {
             <form onSubmit={this.handleSubmit}>
               <label>Wine Region:
                     <select value={this.state.selectedValue} onChange={this.handleSelectChange}>
+                      <option value="Get Started">Get Started</option>
                       <option value="Dry Creek Valley">Dry Creek Valley</option>
                       <option value="Alexander Valley">Alexander Valley</option>
                       <option value="Sonoma Valley">Sonoma Valley</option>

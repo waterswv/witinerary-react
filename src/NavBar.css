@@ -13,7 +13,7 @@
       .navbar li {
           float: left;
       }
-      .navbar li a {
+      .navbar a {
           display: block;
           color: white;
           text-align: center;
@@ -22,9 +22,10 @@
       }
 
       /* Change the link color to #111 (black) on hover */
-      .navbar li a:hover {
-          text-shadow: DodgerBlue 1px 0 10px;
+       .navbar li:hover {
+          background-color: #936e89;
       }
+
       .title{
-        font-size: 18px;
+        font-size: 20px;
       }
