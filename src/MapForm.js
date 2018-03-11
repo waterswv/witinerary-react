@@ -29,19 +29,21 @@ class MapForm extends Component {
 
   render() {
     return (
-
-            <form className="mapform" onSubmit={this.handleSubmit}>
-                  <select label='Wine Region' value={this.state.selectedValue} onChange={this.handleSelectChange}>
-                    <option value="1">Dry Creek Valley</option>
-                    <option value="2">Alexander Valley</option>
-                    <option value="3">Sonoma Valley</option>
-                  </select>
-
-                  <input label='Name your trip' type='text' value={this.state.value} onChange={this.handleChange} />
-
+        <div className="mapform">
+            <form onSubmit={this.handleSubmit}>
+              <label>Wine Region:
+                    <select value={this.state.selectedValue} onChange={this.handleSelectChange}>
+                      <option value="Dry Creek Valley">Dry Creek Valley</option>
+                      <option value="Alexander Valley">Alexander Valley</option>
+                      <option value="Sonoma Valley">Sonoma Valley</option>
+                    </select>
+              </label>
+              <label>Name your trip:
+                <input type='text' value={this.state.value} onChange={this.handleChange} />
+              </label>
               <input className='button' type="submit" value="Submit" />
             </form>
-
+          </div>
 
     );
   }
