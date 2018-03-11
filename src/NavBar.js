@@ -3,19 +3,18 @@ import './NavBar.css';
 
 class NavBar extends Component {
   render() {
-    let style = {backgroundColor: '#B88AAC'}
+    let style = {float: 'right'}
     return (
-      <nav style={style}>
-      <div class="nav-wrapper">
-      <a href="/" class="brand-logo"><i class="large material-icons">whatshot</i>Wine-tripping</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="/new-map/59c15c15d0e8ec15c0eea22e">My Wine Map</a></li>
-        <li><a href="#">Wineries</a></li>
-    </ul>
-  </div>
-  </nav>
+
+      <nav className="navbar">
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li className='title'><a href="/">Wine Tripping</a></li>
+          <li style={style}><a href="#">Sign Up</a></li>
+          <li style={style}><a href="#">Login</a></li>
+          <li style={style}><a href="/new-map/59c15c15d0e8ec15c0eea22e">My Wine Map</a></li>
+          <li style={style}><a href="#">Wineries</a></li>
+      </ul>
+    </nav>
 
   );
   }

@@ -7,7 +7,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #333;
+        background-color: #B88AAC;
       }
 
       .navbar li {
@@ -23,5 +23,8 @@
 
       /* Change the link color to #111 (black) on hover */
       .navbar li a:hover {
-          background-color: #111;
+          text-shadow: DodgerBlue 1px 0 10px;
+      }
+      .title{
+        font-size: 18px;
       }

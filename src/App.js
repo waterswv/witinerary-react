@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
-import Vineyards from './Vineyards';
+import MapForm from './MapForm';
 
 
 class App extends Component {
@@ -13,7 +13,9 @@ class App extends Component {
       <div>
         <NavBar />
         <div className="hero-image home-hero" style={style}>
-          Get lost amongst the Vines. <br></br> Wine country on your schedule 
+        <br></br>
+          <p>Get lost amongst the Vines. <br></br> Wine country on your schedule</p>
+          <MapForm />
         </div>
         <Footer />
       </div>
