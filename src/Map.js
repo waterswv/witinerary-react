@@ -8,7 +8,8 @@ class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      wineries: [{name: 'Unti', description: 'DCR Vineyard', hours: '10AM-5PM'}, {name: 'Wilson', description: 'DCR Vineyard', hours: '10AM-5PM'}]
+      map: [{}],
+      wineries: []
     }
   }
 
@@ -16,6 +17,9 @@ class Map extends Component {
     fetch('http://localhost:8000/api/winery')
       .then((response) => response.json())
         .then((wineries) => this.setState({wineries: wineries}))
+    fetch('http://localhost:8000/api/map')
+      .then((response) => response.json())
+        .then((maps) => this.setState({map: maps.data}))
   }
   render() {
 
@@ -33,8 +37,9 @@ class Map extends Component {
 
     return (
 
-      <div className='wrapper'>
+      <div className=''>
         <NavBar />
+        <div>{this.state.map[0].title}</div>
         {vineyards}
       </div>
 
