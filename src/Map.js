@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './Map.css';
 import NavBar from './NavBar'
+import Vineyards from './Vineyards'
 
 class Map extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      wineries: []
+      wineries: [{name: 'Unti', description: 'DCR Vineyard', hours: '10AM-5PM'}, {name: 'Wilson', description: 'DCR Vineyard', hours: '10AM-5PM'}]
     }
   }
 
@@ -18,12 +19,23 @@ class Map extends Component {
   }
   render() {
 
+      let vineyards = this.state.wineries.map((winery, index) => {
+        return (
+          <Vineyards
+            key={index}
+            name={winery.name}
+            description={winery.description}
+            hours={winery.hours}
+          />
+        )
+      })
+
 
     return (
 
       <div className='wrapper'>
         <NavBar />
-
+        {vineyards}
       </div>
 
   );
