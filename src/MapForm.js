@@ -23,8 +23,9 @@ class MapForm extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('Your trips name is : ' + this.state.value + " and you'll be going to the " + this.state.selectedValue + " region.");
     event.preventDefault();
+    this.setState({selectedValue: '', value: ''  })
   }
 
   render() {

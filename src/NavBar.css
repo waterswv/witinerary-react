@@ -12,6 +12,7 @@
 
       .navbar li {
           float: left;
+          height: 55px;
       }
       .navbar a {
           display: block;
