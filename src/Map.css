@@ -10,7 +10,7 @@
     	}
 
 .map, .directions img {
-
+  grid-area: map;
   max-width: 100%;
   /* These 3 lines of CSS Center an IMG in a DIV  */
   border: none;
