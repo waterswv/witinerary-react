@@ -37,6 +37,7 @@
   border: 1px solid grey;
   padding: 5px;
   margin: 5px;
+  text-align: center;
 }
 .map, .directions img {
   grid-area: map;
