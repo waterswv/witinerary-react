@@ -37,10 +37,12 @@ class Map extends Component {
 
     return (
 
-      <div className=''>
+      <div>
         <NavBar />
-        <div>{this.state.map[0].title}</div>
-        {vineyards}
+        <div className='row'>
+          <div className='col-4'> <div className='title'>{this.state.map[0].title}</div></div>
+          <div className='col-8'>{vineyards}</div>
+        </div>
       </div>
 
   );
