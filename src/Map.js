@@ -8,7 +8,9 @@ class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      wineries: [{name: 'Unti', description: 'DCR Vineyard', hours: '10AM-5PM'}, {name: 'Wilson', description: 'DCR Vineyard', hours: '10AM-5PM'}]
+      map: [{}],
+      wineries: [],
+      theMap: ''
     }
   }
 
@@ -16,6 +18,12 @@ class Map extends Component {
     fetch('http://localhost:8000/api/winery')
       .then((response) => response.json())
         .then((wineries) => this.setState({wineries: wineries}))
+    fetch('http://localhost:8000/api/map')
+      .then((response) => response.json())
+        .then((maps) => this.setState({map: maps.data}))
+    fetch('http://localhost:8000/api/map/google')
+      .then((response) => response.json())
+        .then((theMap) => this.setState({theMap: theMap}))
   }
   render() {
 
@@ -33,9 +41,15 @@ class Map extends Component {
 
     return (
 
-      <div className='wrapper'>
+      <div>
         <NavBar />
-        {vineyards}
+        <div className='row'>
+          <div className='col-4'>
+            <div className='title'>{this.state.map[0].title}</div>
+            <div className='title'><img src={this.state.theMap} alt='staticmap'/></div>
+          </div>
+          <div className='col-8'>{vineyards}</div>
+        </div>
       </div>
 
   );

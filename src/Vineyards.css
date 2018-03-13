@@ -1,12 +1,15 @@
 .vineyards {
-
+  border: 1px solid grey;
+  padding: 5px;
+  margin: 5px;
   font-size: 12px;
-  max-height: 75px;
 }
 .vineyards p {
   max-height: 10;
 }
-
+.vineyards:hover{
+  background-color: lightgrey;
+}
 .tasting-room {
 
 }
