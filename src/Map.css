@@ -34,10 +34,14 @@
 
     	}
 .title{
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding: 5px;
   margin: 5px;
   text-align: center;
+  text-decoration: underline;
+}
+img {
+  border-radius: 25px;
 }
 .map, .directions img {
   grid-area: map;
