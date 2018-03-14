@@ -30,3 +30,29 @@
       .logo{
         font-size: 20px;
       }
+
+      @media screen and (max-width: 600px) {
+        .navbar {
+          height: 55px;
+          background: #B88AAC url(https://use.fontawesome.com/releases/v5.0.8/svgs/solid/bars.svg) no-repeat 12%/12% 45%;
+
+        }
+
+        .navbar li {
+          display: none;
+        }
+
+        .navbar:hover {
+          background-image: none;
+
+        }
+        .navbar:hover .logo {
+          display: none;
+
+        }
+        .navbar:hover li {
+          display: block;
+          margin: 0 0 5px;
+          float: left;
+        }
+      }
