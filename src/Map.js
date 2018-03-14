@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import GoogleMapReact from 'google-map-react';
 import './Map.css';
 import NavBar from './NavBar'
 import Vineyards from './Vineyards'
@@ -13,17 +14,20 @@ class Map extends Component {
       theMap: ''
     }
   }
+  static defaultProps = {
+    center: {lat: 38.5706633, lng: -122.7795547},
+    zoom: 11
+  };
 
   componentDidMount(){
+
     fetch('http://localhost:8000/api/winery')
       .then((response) => response.json())
         .then((wineries) => this.setState({wineries: wineries}))
     fetch('http://localhost:8000/api/map')
       .then((response) => response.json())
         .then((maps) => this.setState({map: maps.data}))
-    fetch('http://localhost:8000/api/map/google')
-      .then((response) => response.json())
-        .then((theMap) => this.setState({theMap: theMap}))
+
   }
   render() {
 
@@ -46,7 +50,15 @@ class Map extends Component {
         <div className='row'>
           <div className='col-4'>
             <div className='title'>{this.state.map[0].title}</div>
-            <div className='title'><img src={this.state.theMap} alt='staticmap'/></div>
+            <div id='the-map'>
+            <GoogleMapReact
+              bootstrapURLKeys={{ key: ['AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q'] }}
+              defaultCenter={this.props.center}
+              defaultZoom={this.props.zoom}
+              >
+          
+              </GoogleMapReact>
+            </div>
           </div>
           <div className='col-8'>{vineyards}</div>
         </div>

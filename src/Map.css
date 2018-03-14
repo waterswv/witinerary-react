@@ -43,6 +43,9 @@
 img {
   border-radius: 25px;
 }
+#the-map {
+  height: 400px;
+}
 .map, .directions img {
   grid-area: map;
   max-width: 100%;
