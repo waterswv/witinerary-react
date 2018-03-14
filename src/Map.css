@@ -45,6 +45,7 @@ img {
 }
 #the-map {
   height: 400px;
+  width: 100%;
 }
 .map, .directions img {
   grid-area: map;
@@ -54,4 +55,21 @@ img {
   display: block;
   margin: 0 auto;
   /* These 3 lines of CSS Center an IMG in a DIV  */
+}
+@media screen and (max-width: 800px){
+  #the-map {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 600px){
+
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    #the-map {
+      height: 300px;
+    }
+
 }

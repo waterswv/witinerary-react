@@ -48,7 +48,7 @@ class Map extends Component {
       <div>
         <NavBar />
         <div className='row'>
-          <div className='col-4'>
+          <div className='col-5'>
             <div className='title'>{this.state.map[0].title}</div>
             <div id='the-map'>
             <GoogleMapReact
@@ -60,7 +60,7 @@ class Map extends Component {
               </GoogleMapReact>
             </div>
           </div>
-          <div className='col-8'>{vineyards}</div>
+          <div className='col-7'>{vineyards}</div>
         </div>
       </div>
 
