@@ -4,34 +4,47 @@ import './Map.css';
 import NavBar from './NavBar'
 import Vineyards from './Vineyards'
 
+const Circle = (props) => { return  <div className='circles' onClick={props.handleClick}><i className='fa fa-circle-o'></i></div>}
+
+
 class Map extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      map: [{}],
-      wineries: [],
-      theMap: ''
+      maps: [{}],
+      theWineries: [],
+      theMap: '',
+      selectedWineries: [],
+      isActive: true,
+      style: {display: 'block'},
     }
+    this.handleClick = this.handleClick.bind(this);
   }
   static defaultProps = {
     center: {lat: 38.5706633, lng: -122.7795547},
     zoom: 11
   };
 
+  handleClick(event){
+    console.log("Why won't you work");
+
+
+  }
+
   componentDidMount(){
 
     fetch('http://localhost:8000/api/winery')
       .then((response) => response.json())
-        .then((wineries) => this.setState({wineries: wineries}))
+        .then((wineries) => this.setState({theWineries: wineries}))
     fetch('http://localhost:8000/api/map')
       .then((response) => response.json())
-        .then((maps) => this.setState({map: maps.data}))
+        .then((maps) => this.setState({maps: maps.data, selectedWineries: maps.data[0].wineries}))
 
   }
   render() {
 
-      let vineyards = this.state.wineries.map((winery, index) => {
+      let vineyards = this.state.theWineries.map((winery, index) => {
         return (
           <Vineyards
             key={index}
@@ -40,7 +53,18 @@ class Map extends Component {
             hours={winery.hours}
           />
         )
-      })
+      });
+
+      let selectedVineyards = this.state.selectedWineries.map((winery, index) => {
+        return (
+          <Vineyards
+            key={index}
+            name={winery.name}
+            description={winery.description}
+            hours={winery.hours}
+          />
+        )
+      });
 
 
     return (
@@ -48,20 +72,38 @@ class Map extends Component {
       <div>
         <NavBar />
         <div className='row'>
-          <div className='col-4'>
-            <div className='title'>{this.state.map[0].title}</div>
+          <div className='col-5'>
+            <div className='title'>{this.state.maps[0].title}</div>
             <div id='the-map'>
             <GoogleMapReact
               bootstrapURLKeys={{ key: ['AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q'] }}
               defaultCenter={this.props.center}
               defaultZoom={this.props.zoom}
               >
-          
+
               </GoogleMapReact>
             </div>
           </div>
-          <div className='col-8'>{vineyards}</div>
+          <div className='col-7'>
+          <div className='map-card'>
+            <div className='map-tabs'>
+            <Circle onClick={this.handleClick}/>
+            </div>
+            <span  className="hidden">
+              <h3>Selected Wineries</h3>
+              {selectedVineyards}
+            </span>
+            <span className="active">
+              <h3>Available Wineries</h3>
+              {vineyards}
+            </span>
+          </div>
+
+
+          </div>
         </div>
+
+
       </div>
 
   );
