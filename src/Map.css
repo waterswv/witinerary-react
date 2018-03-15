@@ -73,6 +73,12 @@ img {
     }
 
 }
+.active {
+  display: block
+}
+.hidden {
+  display: none;
+}
 .my-map {
 border: 1px solid black;
 }
@@ -93,7 +99,7 @@ border: 1px solid black;
   border: solid black;
 }
 .map-tabs {
-  border-top: solid black;
+  border-bottom: solid black;
 }
 .map-tabs > .circles {
     display: inline-block;

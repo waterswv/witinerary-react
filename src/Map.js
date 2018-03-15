@@ -4,6 +4,9 @@ import './Map.css';
 import NavBar from './NavBar'
 import Vineyards from './Vineyards'
 
+const Circle = (props) => { return  <div className='circles' onClick={props.handleClick}><i className='fa fa-circle-o'></i></div>}
+
+
 class Map extends Component {
 
   constructor(props) {
@@ -13,7 +16,8 @@ class Map extends Component {
       theWineries: [],
       theMap: '',
       selectedWineries: [],
-      style: {display: 'block'}
+      isActive: true,
+      style: {display: 'block'},
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -23,8 +27,9 @@ class Map extends Component {
   };
 
   handleClick(event){
-    let theDisplay = this.state.style.display === 'block' ? {display: 'none'} : {display: 'block'}
-    this.setState({style: theDisplay})
+    console.log("Why won't you work");
+
+
   }
 
   componentDidMount(){
@@ -81,19 +86,20 @@ class Map extends Component {
           </div>
           <div className='col-7'>
           <div className='map-card'>
-            <span  style={this.state.style}>
+            <div className='map-tabs'>
+            <Circle onClick={this.handleClick}/>
+            </div>
+            <span  className="hidden">
               <h3>Selected Wineries</h3>
               {selectedVineyards}
             </span>
-            <div className='map-tabs'>
-              <div className='circles'onClick={this.handleClick}><i className="fa fa-circle-o"></i></div>
-              <div className='circles'onClick={this.handleClick}><i className="fa fa-circle-o"></i></div>
-              <div className='circles'onClick={this.handleClick}><i className="fa fa-circle"></i></div>
-            </div>
+            <span className="active">
+              <h3>Available Wineries</h3>
+              {vineyards}
+            </span>
           </div>
 
-            <h3>Available Wineries</h3>
-            {vineyards}
+
           </div>
         </div>
 
