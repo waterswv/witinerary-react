@@ -6,6 +6,9 @@ import Vineyards from './Vineyards';
 import {Tab, TestComponent} from './Tab'
 
 
+const Circle = (props) => { return  <div className='circles' onClick={props.handleClick}><i className='fa fa-circle-o'></i></div>}
+
+
 class Map extends Component {
 
   constructor(props) {
@@ -15,6 +18,7 @@ class Map extends Component {
       theWineries: [],
       theMap: '',
       selectedWineries: [],
+
       style: {
         one: {display: 'block'},
         two: {display: 'block'},
@@ -28,6 +32,7 @@ class Map extends Component {
 
       }
       this.handleClick = this.handleClick.bind(this);
+
   }
   static defaultProps = {
     center: {lat: 38.5706633, lng: -122.7795547},
@@ -75,6 +80,12 @@ class Map extends Component {
     }
 
     console.log('This is the id passed down ', id);
+
+  }
+
+  handleClick(event){
+    console.log("Why won't you work");
+
 
   }
 
@@ -133,6 +144,7 @@ class Map extends Component {
           <div className='col-7'>
           <div className='map-card'>
             <div className='map-tabs'>
+
               <Tab
                 value={1}
                 onTabClick={this.handleClick}
@@ -166,6 +178,7 @@ class Map extends Component {
               <h3>Available Add-ons</h3>
               Coming Soon
             </span>
+
 
           </div>
 

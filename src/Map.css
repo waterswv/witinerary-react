@@ -101,7 +101,9 @@ border: 1px solid black;
 .map-tabs {
   border-bottom: solid black;
 }
+
 .map-tabs > .tabs {
+
     display: inline-block;
     display: -moz-inline-box;
     *display: inline; /* For IE7 */
@@ -110,6 +112,7 @@ border: 1px solid black;
     width: 32%;
     text-align: center;
 }
+
 .tabs-span:hover{
   background-color: lightgrey;
 }
@@ -118,5 +121,6 @@ border: 1px solid black;
     border-right: solid black;
 }
 .map-tabs > .tabs:last-child {
+
     border-left: solid black;
 }
