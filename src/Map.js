@@ -3,10 +3,9 @@ import GoogleMapReact from 'google-map-react';
 import './Map.css';
 import NavBar from './NavBar';
 import Vineyards from './Vineyards';
-import {Tab, TestComponent} from './Tab'
+import {Tab} from './Tab'
 
 
-const Circle = (props) => { return  <div className='circles' onClick={props.handleClick}><i className='fa fa-circle-o'></i></div>}
 
 
 class Map extends Component {
@@ -83,11 +82,6 @@ class Map extends Component {
 
   }
 
-  handleClick(event){
-    console.log("Why won't you work");
-
-
-  }
 
   componentDidMount(){
 
