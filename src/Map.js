@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
 import './Map.css';
-import NavBar from './NavBar'
-import Vineyards from './Vineyards'
+import NavBar from './NavBar';
+import Vineyards from './Vineyards';
+import {Tab, TestComponent} from './Tab'
+
 
 const Circle = (props) => { return  <div className='circles' onClick={props.handleClick}><i className='fa fa-circle-o'></i></div>}
 
@@ -16,15 +18,70 @@ class Map extends Component {
       theWineries: [],
       theMap: '',
       selectedWineries: [],
-      isActive: true,
-      style: {display: 'block'},
-    }
-    this.handleClick = this.handleClick.bind(this);
+
+      style: {
+        one: {display: 'block'},
+        two: {display: 'block'},
+        three: {display: 'block'}
+      },
+      tabs: {
+        tabone: {backgroundColor: 'white'},
+        tabtwo: {backgroundColor: 'white'},
+        tabthree: {backgroundColor: 'white'}
+        }
+
+      }
+      this.handleClick = this.handleClick.bind(this);
+
   }
   static defaultProps = {
     center: {lat: 38.5706633, lng: -122.7795547},
     zoom: 11
   };
+  handleClick(id){
+    if(id === 1)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.style.one = {display: 'block'};
+        newState.style.two = {display: 'none'};
+        newState.style.three = {display: 'none'};
+        newState.tabs.tabone = {backgroundColor: 'red'};
+        newState.tabs.tabtwo = {backgroundColor: 'white'};
+        newState.tabs.tabthree = {backgroundColor: 'white'};
+        return newState;
+      });
+    }
+    if(id === 2)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.style.one = {display: 'none'};
+        newState.style.two = {display: 'block'};
+        newState.style.three = {display: 'none'};
+        newState.tabs.tabone = {backgroundColor: 'white'};
+        newState.tabs.tabtwo = {backgroundColor: 'red'};
+        newState.tabs.tabthree = {backgroundColor: 'white'};
+        return newState;
+      });
+    }
+    if(id === 3)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.style.one = {display: 'none'};
+        newState.style.two = {display: 'none'};
+        newState.style.three = {display: 'block'};
+        newState.tabs.tabone = {backgroundColor: 'white'};
+        newState.tabs.tabtwo = {backgroundColor: 'white'};
+        newState.tabs.tabthree = {backgroundColor: 'red'};
+        return newState;
+      });
+    }
+
+    console.log('This is the id passed down ', id);
+
+  }
 
   handleClick(event){
     console.log("Why won't you work");
@@ -87,16 +144,42 @@ class Map extends Component {
           <div className='col-7'>
           <div className='map-card'>
             <div className='map-tabs'>
-            <Circle onClick={this.handleClick}/>
+
+              <Tab
+                value={1}
+                onTabClick={this.handleClick}
+                name={'Trip Wineries'}
+                tabs={this.state.tabs.tabone}
+                />
+              <Tab
+                value={2}
+                onTabClick={this.handleClick}
+                name={'Recommendations'}
+                tabs={this.state.tabs.tabtwo}
+              />
+              <Tab
+                value={3}
+                onTabClick={this.handleClick}
+                name={'Add-ons'}
+                tabs={this.state.tabs.tabthree}
+              />
+
             </div>
-            <span  className="hidden">
+
+            <span  className="hidden" style={this.state.style.one}>
               <h3>Selected Wineries</h3>
               {selectedVineyards}
             </span>
-            <span className="active">
+            <span className="active" style={this.state.style.two}>
               <h3>Available Wineries</h3>
               {vineyards}
             </span>
+            <span className="active" style={this.state.style.three}>
+              <h3>Available Add-ons</h3>
+              Coming Soon
+            </span>
+
+
           </div>
 
 
