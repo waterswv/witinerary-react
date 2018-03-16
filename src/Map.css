@@ -45,6 +45,7 @@ img {
 }
 #the-map {
   height: 400px;
+  width: 100%;
 }
 .map, .directions img {
   grid-area: map;
@@ -54,4 +55,68 @@ img {
   display: block;
   margin: 0 auto;
   /* These 3 lines of CSS Center an IMG in a DIV  */
+}
+@media screen and (max-width: 800px){
+  #the-map {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 600px){
+
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+    #the-map {
+      height: 300px;
+    }
+
+}
+.active {
+  display: block
+}
+.hidden {
+  display: none;
+}
+.my-map {
+border: 1px solid black;
+}
+
+        /* These create a circle out of a blank div */
+        /* .circle {
+        	border: 2px solid #666666;
+        	border-radius: 50%;
+        	opacity: 0.6;
+        	width: 24px;
+        	height: 24px;
+
+        }
+        .circle.filled {
+        	background-color: #666666;
+        } */
+.map-card {
+  border: solid black;
+}
+.map-tabs {
+  border-bottom: solid black;
+}
+.map-tabs > .tabs {
+    display: inline-block;
+    display: -moz-inline-box;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    margin-left: 2%;
+    width: 32%;
+    text-align: center;
+}
+.tabs-span:hover{
+  background-color: lightgrey;
+}
+.map-tabs > .tabs:first-child {
+    margin-left: 0;
+    border-right: solid black;
+}
+.map-tabs > .tabs:last-child {
+    border-left: solid black;
 }
