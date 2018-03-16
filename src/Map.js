@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import './Map.css';
 import NavBar from './NavBar';
 import Vineyards from './Vineyards';
+import {Tab, TestComponent} from './Tab'
 
 
 class Map extends Component {
@@ -20,9 +21,9 @@ class Map extends Component {
         three: {display: 'block'}
       },
       tabs: {
-        one: {backgroundColor: 'white'},
-        two: {backgroundColor: 'white'},
-        three: {backgroundColor: 'white'}
+        tabone: {backgroundColor: 'white'},
+        tabtwo: {backgroundColor: 'white'},
+        tabthree: {backgroundColor: 'white'}
         }
 
       }
@@ -33,9 +34,48 @@ class Map extends Component {
     zoom: 11
   };
   handleClick(id){
-    this.setState({style: this.state.style.display === 'block' ? {display: 'none'} : {display: 'block'}})
+    if(id === 1)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.style.one = {display: 'block'};
+        newState.style.two = {display: 'none'};
+        newState.style.three = {display: 'none'};
+        newState.tabs.tabone = {backgroundColor: 'red'};
+        newState.tabs.tabtwo = {backgroundColor: 'white'};
+        newState.tabs.tabthree = {backgroundColor: 'white'};
+        return newState;
+      });
+    }
+    if(id === 2)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.style.one = {display: 'none'};
+        newState.style.two = {display: 'block'};
+        newState.style.three = {display: 'none'};
+        newState.tabs.tabone = {backgroundColor: 'white'};
+        newState.tabs.tabtwo = {backgroundColor: 'red'};
+        newState.tabs.tabthree = {backgroundColor: 'white'};
+        return newState;
+      });
+    }
+    if(id === 3)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.style.one = {display: 'none'};
+        newState.style.two = {display: 'none'};
+        newState.style.three = {display: 'block'};
+        newState.tabs.tabone = {backgroundColor: 'white'};
+        newState.tabs.tabtwo = {backgroundColor: 'white'};
+        newState.tabs.tabthree = {backgroundColor: 'red'};
+        return newState;
+      });
+    }
 
-    console.log(id);
+    console.log('This is the id passed down ', id);
+
   }
 
   componentDidMount(){
@@ -93,10 +133,27 @@ class Map extends Component {
           <div className='col-7'>
           <div className='map-card'>
             <div className='map-tabs'>
-              <div className='tabs' style={this.state.tabs.one}><span className='tabs-span' data-id='one' onClick={('one') => this.handleClick}>Trip Wineries</span></div>
-              <div className='tabs' style={this.state.tabs.two}><span className='tabs-span' data-id='two' onClick={('two') => this.handleClick}>Recommendations</span></div>
-              <div className='tabs' style={this.state.tabs.three}><span className='tabs-span' data-id='two' onClick={('three') => this.handleClick}>Add-ons</span></div>
+              <Tab
+                value={1}
+                onTabClick={this.handleClick}
+                name={'Trip Wineries'}
+                tabs={this.state.tabs.tabone}
+                />
+              <Tab
+                value={2}
+                onTabClick={this.handleClick}
+                name={'Recommendations'}
+                tabs={this.state.tabs.tabtwo}
+              />
+              <Tab
+                value={3}
+                onTabClick={this.handleClick}
+                name={'Add-ons'}
+                tabs={this.state.tabs.tabthree}
+              />
+
             </div>
+
             <span  className="hidden" style={this.state.style.one}>
               <h3>Selected Wineries</h3>
               {selectedVineyards}
