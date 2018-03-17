@@ -7,15 +7,16 @@
     width: 32%;
     text-align: center;
 }
-.tabs-span:hover{
-  background-color: lightgrey;
-  border-radius: 2.5px;
-
-}
 .map-tabs > .tabs:first-child {
     margin-left: 0;
     border-right: solid black;
 }
 .map-tabs > .tabs:last-child {
     border-left: solid black;
+}
+
+.tabs-span:hover{
+  background-color: lightgrey;
+  border-radius: 2.5px;
+
 }

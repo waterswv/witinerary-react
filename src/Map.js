@@ -45,7 +45,7 @@ class Map extends Component {
         newState.style.one = {display: 'block'};
         newState.style.two = {display: 'none'};
         newState.style.three = {display: 'none'};
-        newState.tabs.tabone = {backgroundColor: 'red'};
+        newState.tabs.tabone = {backgroundColor: '#B88AAC'};
         newState.tabs.tabtwo = {backgroundColor: 'white'};
         newState.tabs.tabthree = {backgroundColor: 'white'};
         return newState;
@@ -59,7 +59,7 @@ class Map extends Component {
         newState.style.two = {display: 'block'};
         newState.style.three = {display: 'none'};
         newState.tabs.tabone = {backgroundColor: 'white'};
-        newState.tabs.tabtwo = {backgroundColor: 'red'};
+        newState.tabs.tabtwo = {backgroundColor: '#B88AAC'};
         newState.tabs.tabthree = {backgroundColor: 'white'};
         return newState;
       });
@@ -73,7 +73,7 @@ class Map extends Component {
         newState.style.three = {display: 'block'};
         newState.tabs.tabone = {backgroundColor: 'white'};
         newState.tabs.tabtwo = {backgroundColor: 'white'};
-        newState.tabs.tabthree = {backgroundColor: 'red'};
+        newState.tabs.tabthree = {backgroundColor: '#B88AAC'};
         return newState;
       });
     }
@@ -145,12 +145,12 @@ class Map extends Component {
                 name={'Trip Wineries'}
                 tabs={this.state.tabs.tabone}
                 />
-              <Tab
+              <span className='the-span'><Tab
                 value={2}
                 onTabClick={this.handleClick}
                 name={'Recommendations'}
                 tabs={this.state.tabs.tabtwo}
-              />
+              /></span>
               <Tab
                 value={3}
                 onTabClick={this.handleClick}
