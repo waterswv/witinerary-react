@@ -20,21 +20,21 @@ class Map extends Component {
 
       style: {
         one: {display: 'block'},
-        two: {display: 'block'},
-        three: {display: 'block'}
+        two: {display: 'none'},
+        three: {display: 'none'}
       },
       tabs: {
-        tabone: {backgroundColor: 'white'},
+        tabone: {backgroundColor: '#B88AAC'},
         tabtwo: {backgroundColor: 'white'},
         tabthree: {backgroundColor: 'white'}
       },
       mapstyle: {
         one: {display: 'block'},
-        two: {display: 'block'},
-        three: {display: 'block'}
+        two: {display: 'none'},
+        three: {display: 'none'}
       },
       maptabs: {
-        tabone: {backgroundColor: 'white'},
+        tabone: {backgroundColor: '#B88AAC'},
         tabtwo: {backgroundColor: 'white'},
         tabthree: {backgroundColor: 'white'}
       },
