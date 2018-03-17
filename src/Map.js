@@ -27,7 +27,17 @@ class Map extends Component {
         tabone: {backgroundColor: 'white'},
         tabtwo: {backgroundColor: 'white'},
         tabthree: {backgroundColor: 'white'}
-        }
+      },
+      mapstyle: {
+        one: {display: 'block'},
+        two: {display: 'block'},
+        three: {display: 'block'}
+      },
+      maptabs: {
+        tabone: {backgroundColor: 'white'},
+        tabtwo: {backgroundColor: 'white'},
+        tabthree: {backgroundColor: 'white'}
+      },
 
       }
       this.handleClick = this.handleClick.bind(this);
@@ -74,6 +84,45 @@ class Map extends Component {
         newState.tabs.tabone = {backgroundColor: 'white'};
         newState.tabs.tabtwo = {backgroundColor: 'white'};
         newState.tabs.tabthree = {backgroundColor: '#B88AAC'};
+        return newState;
+      });
+    }
+    if(id === 4)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.mapstyle.one = {display: 'block'};
+        newState.mapstyle.two = {display: 'none'};
+        newState.mapstyle.three = {display: 'none'};
+        newState.maptabs.tabone = {backgroundColor: '#B88AAC'};
+        newState.maptabs.tabtwo = {backgroundColor: 'white'};
+        newState.maptabs.tabthree = {backgroundColor: 'white'};
+        return newState;
+      });
+    }
+    if(id === 5)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.mapstyle.one = {display: 'none'};
+        newState.mapstyle.two = {display: 'block'};
+        newState.mapstyle.three = {display: 'none'};
+        newState.maptabs.tabone = {backgroundColor: 'white'};
+        newState.maptabs.tabtwo = {backgroundColor: '#B88AAC'};
+        newState.maptabs.tabthree = {backgroundColor: 'white'};
+        return newState;
+      });
+    }
+    if(id === 6)
+    {
+      this.setState( (prevState) => {
+        const newState = Object.assign({}, prevState);
+        newState.mapstyle.one = {display: 'none'};
+        newState.mapstyle.two = {display: 'none'};
+        newState.mapstyle.three = {display: 'block'};
+        newState.maptabs.tabone = {backgroundColor: 'white'};
+        newState.maptabs.tabtwo = {backgroundColor: 'white'};
+        newState.maptabs.tabthree = {backgroundColor: '#B88AAC'};
         return newState;
       });
     }
@@ -125,17 +174,48 @@ class Map extends Component {
         <div className='row'>
           <div className='col-5'>
             <div className='title'>{this.state.maps[0].title}</div>
-            <div id='the-map'>
-            <GoogleMapReact
-              bootstrapURLKeys={{ key: ['AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q'] }}
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-              >
-
-              </GoogleMapReact>
+          <div className='map-card'>
+            <div className='map-tabs'>
+              <Tab
+                value={4}
+                onTabClick={this.handleClick}
+                name={'Map'}
+                tabs={this.state.maptabs.tabone}
+                />
+              <span className='the-span'><Tab
+                value={5}
+                onTabClick={this.handleClick}
+                name={'Directions'}
+                tabs={this.state.maptabs.tabtwo}
+              /></span>
+              <Tab
+                value={6}
+                onTabClick={this.handleClick}
+                name={'TBD View'}
+                tabs={this.state.maptabs.tabthree}
+              />
             </div>
+            <div id='the-map' style={this.state.mapstyle.one}>
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: ['AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q'] }}
+                defaultCenter={this.props.center}
+                defaultZoom={this.props.zoom}
+                >
+                </GoogleMapReact>
+              </div>
+              <span className="active" style={this.state.mapstyle.two}>
+                <h3>Directions</h3>
+
+              </span>
+              <span className="active" style={this.state.mapstyle.three}>
+                <h3>TBD</h3>
+                Coming Soon
+              </span>
           </div>
+        </div>
           <div className='col-7'>
+            <div className='title'>Some Title...</div>
+
           <div className='map-card'>
             <div className='map-tabs'>
 
