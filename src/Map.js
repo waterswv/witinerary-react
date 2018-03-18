@@ -15,9 +15,9 @@ class Map extends Component {
     this.state = {
       maps: [{}],
       theWineries: [],
-      theMap: '',
+      theMap: {center: {lat: 38.5706633, lng: -122.7795547}, zoom: 11},
       selectedWineries: [],
-
+      theDirections: [],
       style: {
         one: {display: 'block'},
         two: {display: 'none'},
@@ -132,6 +132,7 @@ class Map extends Component {
   }
 
 
+
   componentDidMount(){
 
     fetch('http://localhost:8000/api/winery')
@@ -142,6 +143,7 @@ class Map extends Component {
         .then((maps) => this.setState({maps: maps.data, selectedWineries: maps.data[0].wineries}))
 
   }
+  
   render() {
 
       let vineyards = this.state.theWineries.map((winery, index) => {
@@ -198,15 +200,15 @@ class Map extends Component {
             <div id='the-map' style={this.state.mapstyle.one}>
               <GoogleMapReact
                 bootstrapURLKeys={{ key: ['AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q'] }}
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
+                defaultCenter={this.state.theMap.center}
+                defaultZoom={this.state.theMap.zoom}
                 >
                 </GoogleMapReact>
               </div>
-              <span className="active" style={this.state.mapstyle.two}>
+              <div className="the-directions" style={this.state.mapstyle.two}>
                 <h3>Directions</h3>
 
-              </span>
+              </div>
               <span className="active" style={this.state.mapstyle.three}>
                 <h3>TBD</h3>
                 Coming Soon
@@ -240,7 +242,7 @@ class Map extends Component {
 
             </div>
 
-            <span  className="hidden" style={this.state.style.one}>
+            <span  className="active" style={this.state.style.one}>
               <h3>Selected Wineries</h3>
               {selectedVineyards}
             </span>
