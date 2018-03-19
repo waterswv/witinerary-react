@@ -43,10 +43,10 @@
 img {
   border-radius: 25px;
 }
-#the-map {
+.mapforgoogle{
   height: 400px;
-  width: 100%;
 }
+
 .learning img {
   grid-area: map;
   max-width: 100%;

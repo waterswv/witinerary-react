@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import GoogleMapReact from 'google-map-react';
 import './Map.css';
 import NavBar from './NavBar';
 import Vineyards from './Vineyards';
 import {Tab} from './Tab'
+import MapsContainer from './MapsContainer';
 
 
 
@@ -15,7 +15,6 @@ class Map extends Component {
     this.state = {
       maps: [{}],
       theWineries: [],
-      theMap: {center: {lat: 38.5706633, lng: -122.7795547}, zoom: 11},
       selectedWineries: [],
       theDirections: [],
       style: {
@@ -43,10 +42,7 @@ class Map extends Component {
       this.handleClick = this.handleClick.bind(this);
 
   }
-  static defaultProps = {
-    center: {lat: 38.5706633, lng: -122.7795547},
-    zoom: 11
-  };
+
   handleClick(id){
     if(id === 1)
     {
@@ -143,7 +139,7 @@ class Map extends Component {
         .then((maps) => this.setState({maps: maps.data, selectedWineries: maps.data[0].wineries}))
 
   }
-  
+
   render() {
 
       let vineyards = this.state.theWineries.map((winery, index) => {
@@ -197,13 +193,8 @@ class Map extends Component {
                 tabs={this.state.maptabs.tabthree}
               />
             </div>
-            <div id='the-map' style={this.state.mapstyle.one}>
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: ['AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q'] }}
-                defaultCenter={this.state.theMap.center}
-                defaultZoom={this.state.theMap.zoom}
-                >
-                </GoogleMapReact>
+            <div style={this.state.mapstyle.one}>
+              <MapsContainer />
               </div>
               <div className="the-directions" style={this.state.mapstyle.two}>
                 <h3>Directions</h3>
@@ -211,7 +202,6 @@ class Map extends Component {
               </div>
               <span className="active" style={this.state.mapstyle.three}>
                 <h3>TBD</h3>
-                Coming Soon
               </span>
           </div>
         </div>
