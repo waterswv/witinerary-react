@@ -14,6 +14,19 @@ export class MapGoogle extends Component {
       }
     }
   }
+  renderChildren() {
+    const {children} = this.props;
+
+    if (!children) return;
+
+    return React.Children.map(children, c => {
+      return React.cloneElement(c, {
+        map: this.map,
+        google: this.props.google,
+        mapCenter: this.state.currentLocation
+      });
+    })
+  }
   loadMap() {
     if (this.props && this.props.google) {
       // google is available
@@ -78,7 +91,7 @@ recenterMap() {
   render() {
     return (
       <div className='mapforgoogle' ref='mapgoogle'>
-
+        {this.renderChildren()}
       </div>
     )
   }
@@ -92,11 +105,8 @@ MapGoogle.propTypes = {
 }
 MapGoogle.defaultProps = {
   zoom: 10,
-  // Unti Wines, Dry Creek Valley, by default
-  initialCenter: {
-    lat: 38.6640092,
-    lng: -122.9342897
-  },
+  // Unti Wines, Dry Creek Valley, { lat: 38.6640092, lng: -122.9342897 } San Francisco Below by default...
+  initialCenter: {lat: 37.759703, lng: -122.428093},
   centerAroundCurrentLocation: false
 }
 export default MapGoogle;
