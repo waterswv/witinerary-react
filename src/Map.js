@@ -165,6 +165,7 @@ class Map extends Component {
       });
 
 
+
     return (
 
       <div>
@@ -194,7 +195,9 @@ class Map extends Component {
               />
             </div>
             <div style={this.state.mapstyle.one}>
-              <MapsContainer />
+              <MapsContainer
+                vineyards={this.state.selectedWineries}
+                />
               </div>
               <div className="the-directions" style={this.state.mapstyle.two}>
                 <h3>Directions</h3>
