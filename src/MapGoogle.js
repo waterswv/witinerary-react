@@ -7,10 +7,16 @@ export class MapGoogle extends Component {
     super(props);
 
     const {lat, lng} = this.props.initialCenter;
+    const {origin, destination, waypoints} = this.props;
     this.state = {
       currentLocation: {
         lat: lat,
         lng: lng
+      },
+      reqst: {
+        origin: this.props.originDir ||origin,
+        destination: this.props.destDir || destination,
+        waypoints: this.props.wayptDirections || waypoints
       }
     }
   }
@@ -37,11 +43,13 @@ export class MapGoogle extends Component {
     const mapRef = this.refs.mapgoogle;
     const node = ReactDOM.findDOMNode(mapRef);
 
-    let {origin, destination} = this.props;
+    let {origin, destination, waypoints} = this.state.reqst;
 
     const request = Object.assign({}, {
       origin: origin,
       destination: destination,
+      waypoints: waypoints,
+      optimizeWaypoints: true,
       travelMode: 'DRIVING'
     })
 
@@ -109,7 +117,7 @@ recenterMap() {
     }
     if(this.props.displayMap)
       {this.loadMap();}
-    else{
+    if(this.props.displayDirections){
       this.loadDirections();}
   }
 
@@ -154,6 +162,8 @@ MapGoogle.defaultProps = {
   displayMap: true,
   displayDirections: false,
   origin: { lat: 38.6640092, lng: -122.9342897 },
-  destination: { lat: 37.759703, lng: -122.428093 }
+  destination: { lat: 37.759703, lng: -122.428093 },
+  waypoints: []
+
 }
 export default MapGoogle;
