@@ -209,7 +209,7 @@ class Map extends Component {
                   />
               </div>
               <div className="active" style={this.state.mapstyle.three}>
-                <h3>Trip Overivew</h3>
+                <h3>Trip Overview</h3>
               </div>
           </div>
         </div>
@@ -241,11 +241,11 @@ class Map extends Component {
             </div>
 
             <span  className="active" style={this.state.style.one}>
-              <h3>Selected Wineries</h3>
+
               {selectedVineyards}
             </span>
             <span className="active" style={this.state.style.two}>
-              <h3>Available Wineries</h3>
+
               {vineyards}
             </span>
             <span className="active" style={this.state.style.three}>
