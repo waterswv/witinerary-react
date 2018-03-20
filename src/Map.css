@@ -46,6 +46,7 @@ img {
 .mapforgoogle{
   height: 400px;
   overflow: auto;
+  margin: 5px;
 }
 
 .learning img {

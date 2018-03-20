@@ -190,7 +190,7 @@ class Map extends Component {
               <Tab
                 value={6}
                 onTabClick={this.handleClick}
-                name={'TBD View'}
+                name={'Trip Overview'}
                 tabs={this.state.maptabs.tabthree}
               />
             </div>
@@ -202,16 +202,15 @@ class Map extends Component {
               />
             </div>
               <div className="the-directions" style={this.state.mapstyle.two}>
-                <h3>Directions</h3>
                   <MapsContainer
                     vineyards={this.state.selectedWineries}
                     displayMap={false}
                     displayDirections={true}
                   />
               </div>
-              <span className="active" style={this.state.mapstyle.three}>
-                <h3>TBD</h3>
-              </span>
+              <div className="active" style={this.state.mapstyle.three}>
+                <h3>Trip Overivew</h3>
+              </div>
           </div>
         </div>
           <div className='col-7'>
