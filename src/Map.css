@@ -83,6 +83,9 @@ img {
 .hidden {
   display: none;
 }
+.active{
+  margin: 5px;
+}
 .my-map {
 border: 1px solid black;
 }
