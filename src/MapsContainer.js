@@ -9,16 +9,33 @@ export class MapsContainer extends Component {
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
+    // setup Direction prop variables
+    let originDir, destDir;
+    let wayptDirections = [];
+
     let markers = this.props.vineyards.map((vineyard, index) => {
       let pos = {
         lat: vineyard.maps.lat,
         lng: vineyard.maps.long
       }
+      // place lat lng data into direction prop variables
+        if(index === 0)
+        {
+          originDir = pos;
+        }else if (index === this.props.vineyards.length-1) {
+          destDir = pos;
+        }else{
+          wayptDirections.push({location: pos});
+        }
       return (<MapMarker key={index+1} position={pos} />);
     });
+
     return (
       <div>
         <MapGoogle
+          originDir={originDir}
+          destDir={destDir}
+          wayptDirections={wayptDirections}
           displayMap={this.props.displayMap}
           displayDirections={this.props.displayDirections}
           google={this.props.google}>
