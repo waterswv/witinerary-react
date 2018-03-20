@@ -109,7 +109,7 @@ recenterMap() {
     }
     if(this.props.displayMap)
       {this.loadMap();}
-    else{
+    if(this.props.displayDirections){
       this.loadDirections();}
   }
 

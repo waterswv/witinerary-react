@@ -20,6 +20,7 @@ export class MapsContainer extends Component {
       <div>
         <MapGoogle
           displayMap={this.props.displayMap}
+          displayDirections={this.props.displayDirections}
           google={this.props.google}>
           {markers}
         </MapGoogle>
