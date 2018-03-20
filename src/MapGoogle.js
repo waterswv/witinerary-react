@@ -27,12 +27,41 @@ export class MapGoogle extends Component {
       });
     })
   }
+  loadDirections(){
+  if (this.props && this.props.google) {
+    // google is available
+    const {google} = this.props;
+    const maps = google.maps;
+    console.log('Does loadDirections() fire...')
+    // refs.map may need to be ref.mapgoogle ....
+    const mapRef = this.refs.mapgoogle;
+    const node = ReactDOM.findDOMNode(mapRef);
+
+    let {origin, destination} = this.props;
+
+    const request = Object.assign({}, {
+      origin: origin,
+      destination: destination,
+      travelMode: 'DRIVING'
+    })
+
+    this.directionsService = new maps.DirectionsService();
+    this.directionsDisplay = new maps.DirectionsRenderer({panel: node})
+    this.directionsService.route(request, (response, status) => {
+      if(status === 'OK')
+      {
+        this.directionsDisplay.setDirections(response);
+      }
+    });
+
+    }
+  }
   loadMap() {
     if (this.props && this.props.google) {
       // google is available
       const {google} = this.props;
       const maps = google.maps;
-
+      console.log('Does loadMap() fire...')
       // refs.map may need to be ref.mapgoogle ....
       const mapRef = this.refs.mapgoogle;
       const node = ReactDOM.findDOMNode(mapRef);
@@ -64,6 +93,7 @@ recenterMap() {
 
   componentDidMount() {
     // This if statement uses the Navigator geolocation object for assessing the location of the device that is accessing the website.
+
     if (this.props.centerAroundCurrentLocation) {
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((pos) => {
@@ -77,12 +107,20 @@ recenterMap() {
             })
         }
     }
-    this.loadMap();
+    if(this.props.displayMap)
+      {this.loadMap();}
+    else{
+      this.loadDirections();}
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.google !== this.props.google) {
-      this.loadMap();
+
+        if(this.props.displayMap)
+          {this.loadMap();}
+        if(this.props.displayDirections)
+          {this.loadDirections();}
+
     }
     if (prevState.currentLocation !== this.state.currentLocation) {
       this.recenterMap();
@@ -91,7 +129,8 @@ recenterMap() {
   render() {
     return (
       <div className='mapforgoogle' ref='mapgoogle'>
-        {this.renderChildren()}
+
+        { this.props.displayMap ? this.renderChildren() : null }
       </div>
     )
   }
@@ -100,13 +139,21 @@ MapGoogle.propTypes = {
   google: PropTypes.object,
   zoom: PropTypes.number,
   initialCenter: PropTypes.object,
-  centerAroundCurrentLocation: PropTypes.bool
+  centerAroundCurrentLocation: PropTypes.bool,
+  displayMap: PropTypes.bool,
+  displayDirections: PropTypes.bool,
+  origin: PropTypes.object,
+  destination: PropTypes.object
 
 }
 MapGoogle.defaultProps = {
   zoom: 10,
-  // Unti Wines, Dry Creek Valley, { lat: 38.6640092, lng: -122.9342897 } San Francisco Below by default...
-  initialCenter: {lat: 37.759703, lng: -122.428093},
-  centerAroundCurrentLocation: false
+  // Unti Wines, Dry Creek Valley, { lat: 38.6640092, lng: -122.9342897 } San Francisco Below by default...{lat: 37.759703, lng: -122.428093}
+  initialCenter: {lat: 38.6640092, lng: -122.9342897 },
+  centerAroundCurrentLocation: false,
+  displayMap: true,
+  displayDirections: false,
+  origin: { lat: 38.6640092, lng: -122.9342897 },
+  destination: { lat: 37.759703, lng: -122.428093 }
 }
 export default MapGoogle;

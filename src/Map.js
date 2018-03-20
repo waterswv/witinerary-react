@@ -197,11 +197,17 @@ class Map extends Component {
             <div style={this.state.mapstyle.one}>
               <MapsContainer
                 vineyards={this.state.selectedWineries}
-                />
-              </div>
+                displayMap={true}
+                displayDirections={false}
+              />
+            </div>
               <div className="the-directions" style={this.state.mapstyle.two}>
                 <h3>Directions</h3>
-
+                  <MapsContainer
+                    vineyards={this.state.selectedWineries}
+                    displayMap={false}
+                    displayDirections={true}
+                  />
               </div>
               <span className="active" style={this.state.mapstyle.three}>
                 <h3>TBD</h3>

@@ -9,17 +9,17 @@ export class MapsContainer extends Component {
     if (!this.props.loaded) {
       return <div>Loading...</div>
     }
-    let markers = this.props.vineyards.map((vineyard) => {
+    let markers = this.props.vineyards.map((vineyard, index) => {
       let pos = {
         lat: vineyard.maps.lat,
         lng: vineyard.maps.long
       }
-      return (<MapMarker position={pos} />);
+      return (<MapMarker key={index+1} position={pos} />);
     });
-    const pos = {lat: 37.759703, lng: -122.428093}
     return (
       <div>
         <MapGoogle
+          displayMap={this.props.displayMap}
           google={this.props.google}>
           {markers}
         </MapGoogle>
