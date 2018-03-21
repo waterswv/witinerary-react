@@ -4,8 +4,14 @@
   margin: 5px;
   font-size: 12px;
 }
+.heading{
+  text-align: center;
+}
 .vineyards p {
   max-height: 10;
+  display: inline-block;
+  width: 30%;
+  text-align: left;
 }
 .vineyards:hover{
   background-color: lightgrey;
