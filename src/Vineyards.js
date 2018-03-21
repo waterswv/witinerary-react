@@ -9,13 +9,13 @@ class Vineyards extends Component {
       <div className='vineyards'>
         <div className='heading'>
           <p className='vineyard-title'>{this.props.name}</p>
-          <p className='tasting-room'><a href='#'> {'More Info'}</a></p>
-          <p className='add-winery'><a href='#'>{'Click Here to Add Me'}</a></p>
+          <p className='vineyard-address'>{`123 Main St.`} <br></br> {`Healdsburg, CA`}</p>
+          <p className='hours-ops'>{this.props.hours}</p>
         </div>
         <div className='heading'>
-          <p className='vineyard-address'>{'123 Main St. Healdsburg, CA'}</p>
-          <p className='more-info'></p>
-          <p className='hours-ops'>{this.props.hours}</p>
+          <p className='more-info'>{'415-234-8976'}</p>
+          <p className='more-info'><a href='#'> {'More Info'}</a></p>
+          <p className='add-winery'><a href='#'>{'Add Me'}</a></p>
         </div>
       </div>
     );

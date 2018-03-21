@@ -1,6 +1,5 @@
-
-div {
-
+html {
+  font-family: 'Raleway', sans-serif;
 }
 .wrapper {
     		display: grid;

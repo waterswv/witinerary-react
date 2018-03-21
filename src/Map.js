@@ -189,7 +189,7 @@ class Map extends Component {
               <Tab
                 value={6}
                 onTabClick={this.handleClick}
-                name={'Trip Overview'}
+                name={'Trip Details'}
                 tabs={this.state.maptabs.tabthree}
               />
             </div>
