@@ -2,16 +2,41 @@
   border: 1px solid grey;
   padding: 5px;
   margin: 5px;
-  font-size: 12px;
+  font-size: 13px;
+}
+.heading{
+  text-align: center;
 }
 .vineyards p {
   max-height: 10;
+  display: inline-block;
+  width: 30%;
+  text-align: left;
 }
-.vineyards:hover{
-  background-color: lightgrey;
-}
-.tasting-room {
+p a {
+  margin: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: orange;
+  text-decoration: none;
 
 }
-.wine-club {
+a:hover{
+  background-color: lightgrey;
+}
+.vineyards:hover{
+  box-shadow: 1px 1px 5px grey;
+}
+.more-info {
+  display: flex;
+  align-content: end;
+  color: orange;
+  font-size: 15px;
+}
+.add-winery {
+  display: flex;
+  align-content: end;
+}
+.hours-ops{
+  font-family: 'Raleway', sans-serif;
 }
