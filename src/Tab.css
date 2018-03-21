@@ -6,13 +6,15 @@
     margin-left: 2%;
     width: 32%;
     text-align: center;
+    border-radius: 1px;
+      box-shadow: 1px 1px 5px grey;
+
 }
 .map-tabs > .tabs:first-child {
     margin-left: 0;
-    border-right: solid black;
+
 }
 .map-tabs > .tabs:last-child {
-    border-left: solid black;
 }
 
 .tabs-span:hover{

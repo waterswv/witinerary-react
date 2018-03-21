@@ -23,7 +23,7 @@ class Map extends Component {
         three: {display: 'none'}
       },
       tabs: {
-        tabone: {backgroundColor: '#B88AAC'},
+        tabone: {backgroundColor: '#B88AAC', color: 'white'},
         tabtwo: {backgroundColor: 'white'},
         tabthree: {backgroundColor: 'white'}
       },
@@ -33,7 +33,7 @@ class Map extends Component {
         three: {display: 'none'}
       },
       maptabs: {
-        tabone: {backgroundColor: '#B88AAC'},
+        tabone: {backgroundColor: '#B88AAC', color: 'white'},
         tabtwo: {backgroundColor: 'white'},
         tabthree: {backgroundColor: 'white'}
       },
@@ -51,9 +51,9 @@ class Map extends Component {
         newState.style.one = {display: 'block'};
         newState.style.two = {display: 'none'};
         newState.style.three = {display: 'none'};
-        newState.tabs.tabone = {backgroundColor: '#B88AAC'};
-        newState.tabs.tabtwo = {backgroundColor: 'white'};
-        newState.tabs.tabthree = {backgroundColor: 'white'};
+        newState.tabs.tabone = {backgroundColor: '#B88AAC', color: 'white'};
+        newState.tabs.tabtwo = {backgroundColor: 'white', color: 'black'};
+        newState.tabs.tabthree = {backgroundColor: 'white', color: 'black'};
         return newState;
       });
     }
@@ -64,9 +64,9 @@ class Map extends Component {
         newState.style.one = {display: 'none'};
         newState.style.two = {display: 'block'};
         newState.style.three = {display: 'none'};
-        newState.tabs.tabone = {backgroundColor: 'white'};
-        newState.tabs.tabtwo = {backgroundColor: '#B88AAC'};
-        newState.tabs.tabthree = {backgroundColor: 'white'};
+        newState.tabs.tabone = {backgroundColor: 'white', color: 'black'};
+        newState.tabs.tabtwo = {backgroundColor: '#B88AAC', color: 'white'};
+        newState.tabs.tabthree = {backgroundColor: 'white', color: 'black'};
         return newState;
       });
     }
@@ -77,9 +77,9 @@ class Map extends Component {
         newState.style.one = {display: 'none'};
         newState.style.two = {display: 'none'};
         newState.style.three = {display: 'block'};
-        newState.tabs.tabone = {backgroundColor: 'white'};
-        newState.tabs.tabtwo = {backgroundColor: 'white'};
-        newState.tabs.tabthree = {backgroundColor: '#B88AAC'};
+        newState.tabs.tabone = {backgroundColor: 'white', color: 'black'};
+        newState.tabs.tabtwo = {backgroundColor: 'white', color: 'black'};
+        newState.tabs.tabthree = {backgroundColor: '#B88AAC', color: 'white'};
         return newState;
       });
     }
@@ -90,9 +90,9 @@ class Map extends Component {
         newState.mapstyle.one = {display: 'block'};
         newState.mapstyle.two = {display: 'none'};
         newState.mapstyle.three = {display: 'none'};
-        newState.maptabs.tabone = {backgroundColor: '#B88AAC'};
-        newState.maptabs.tabtwo = {backgroundColor: 'white'};
-        newState.maptabs.tabthree = {backgroundColor: 'white'};
+        newState.maptabs.tabone = {backgroundColor: '#B88AAC', color: 'white'};
+        newState.maptabs.tabtwo = {backgroundColor: 'white', color: 'black'};
+        newState.maptabs.tabthree = {backgroundColor: 'white', color: 'black'};
         return newState;
       });
     }
@@ -103,9 +103,9 @@ class Map extends Component {
         newState.mapstyle.one = {display: 'none'};
         newState.mapstyle.two = {display: 'block'};
         newState.mapstyle.three = {display: 'none'};
-        newState.maptabs.tabone = {backgroundColor: 'white'};
-        newState.maptabs.tabtwo = {backgroundColor: '#B88AAC'};
-        newState.maptabs.tabthree = {backgroundColor: 'white'};
+        newState.maptabs.tabone = {backgroundColor: 'white', color: 'black'};
+        newState.maptabs.tabtwo = {backgroundColor: '#B88AAC', color: 'white'};
+        newState.maptabs.tabthree = {backgroundColor: 'white', color: 'black'};
         return newState;
       });
     }
@@ -116,9 +116,9 @@ class Map extends Component {
         newState.mapstyle.one = {display: 'none'};
         newState.mapstyle.two = {display: 'none'};
         newState.mapstyle.three = {display: 'block'};
-        newState.maptabs.tabone = {backgroundColor: 'white'};
-        newState.maptabs.tabtwo = {backgroundColor: 'white'};
-        newState.maptabs.tabthree = {backgroundColor: '#B88AAC'};
+        newState.maptabs.tabone = {backgroundColor: 'white', color: 'black'};
+        newState.maptabs.tabtwo = {backgroundColor: 'white', color: 'black'};
+        newState.maptabs.tabthree = {backgroundColor: '#B88AAC', color: 'white'};
         return newState;
       });
     }
@@ -205,11 +205,11 @@ class Map extends Component {
                     vineyards={this.state.selectedWineries}
                     displayMap={false}
                     displayDirections={true}
-                  
+
                   />
               </div>
               <div className="active" style={this.state.mapstyle.three}>
-                <h3>Trip Overivew</h3>
+                <h3>Trip Overview</h3>
               </div>
           </div>
         </div>
@@ -241,11 +241,11 @@ class Map extends Component {
             </div>
 
             <span  className="active" style={this.state.style.one}>
-              <h3>Selected Wineries</h3>
+
               {selectedVineyards}
             </span>
             <span className="active" style={this.state.style.two}>
-              <h3>Available Wineries</h3>
+
               {vineyards}
             </span>
             <span className="active" style={this.state.style.three}>

@@ -83,8 +83,10 @@ img {
 .hidden {
   display: none;
 }
+.active{
+  margin: 5px;
+}
 .my-map {
-border: 1px solid black;
 }
 
         /* These create a circle out of a blank div */
@@ -100,8 +102,10 @@ border: 1px solid black;
         	background-color: #666666;
         } */
 .map-card {
-  border: solid black;
+  box-shadow: 5px 5px 15px grey;
+  border: 1px solid black;
+  padding: 5px;
 }
 .map-tabs {
-  border-bottom: solid black;
+
 }
