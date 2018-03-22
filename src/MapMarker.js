@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-export class MapMarker extends Component {
 
+function camelize(str) {
+  return str.split(' ').map( (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join('');
+}
+
+export class MapMarker extends Component {
 
 
   componentDidUpdate(prevProps) {
@@ -13,7 +19,7 @@ export class MapMarker extends Component {
   }
   renderMarker() {
     let { map, google, position, mapCenter } = this.props;
-
+    const evtNames = ['click'];
     let pos = position || mapCenter;
     position = new google.maps.LatLng(pos.lat, pos.lng);
 
@@ -23,6 +29,20 @@ export class MapMarker extends Component {
         title: this.props.title
       };
       this.marker = new google.maps.Marker(pref);
+
+      evtNames.forEach(e => {
+        this.marker.addListener(e, this.handleEvent(e));
+      });
+  }
+
+  handleEvent(evt) {
+    
+    return (e) => {
+      const evtName = `on${camelize(evt)}`;
+      if (this.props[evtName]) {
+        this.props[evtName](this.props, this.marker, e);
+      }
+    }
   }
   render(){
     return null;

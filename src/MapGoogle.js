@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
+const camelize = function(str) {
+  return str.split(' ').map(function(word){
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join('');
+}
+
 export class MapGoogle extends Component {
   constructor(props) {
     super(props);
@@ -64,6 +70,19 @@ export class MapGoogle extends Component {
 
     }
   }
+  renderRoute(map, request){
+    const {google} = this.props;
+    const maps = google.maps;
+    this.directionsService = new maps.DirectionsService();
+    this.directionsDisplay = new maps.DirectionsRenderer()
+    this.directionsDisplay.setMap(map);
+    this.directionsService.route(request, (response, status) => {
+      if(status === 'OK')
+      {
+        this.directionsDisplay.setDirections(response);
+      }
+    });
+  }
   loadMap() {
     if (this.props && this.props.google) {
       // google is available
@@ -82,20 +101,43 @@ export class MapGoogle extends Component {
         center: center,
         zoom: zoom
       });
+      let {origin, destination, waypoints} = this.state.reqst;
+
+      const request = Object.assign({}, {
+        origin: origin,
+        destination: destination,
+        waypoints: waypoints,
+        optimizeWaypoints: true,
+        travelMode: 'DRIVING'
+      })
       this.map = new maps.Map(node, mapConfig);
 
-      let centerChangedTimeout;
-      this.map.addListener('dragend', (evt) => {
-        if (centerChangedTimeout) {
-          clearTimeout(centerChangedTimeout);
-          centerChangedTimeout = null;
-        }
-        centerChangedTimeout = setTimeout(() => {
-          this.props.onMove(this.map);
-        }, 0);
-      })
+      const evtNames = ['click', 'dragend'];
+
+      this.renderRoute(this.map, request);
+
+      evtNames.forEach(e => {
+        this.map.addListener(e, this.handleEvent(e));
+      });
+
+    }
   }
-}
+  handleEvent(evtName) {
+    let timeout;
+    const handlerName = `on${camelize(evtName)}`;
+
+    return (e) => {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      timeout = setTimeout(() => {
+        if (this.props[handlerName]) {
+          this.props[handlerName](this.props, this.map, e);
+        }
+      }, 0);
+    }
+  }
 // Using Google Maps .panTo method to recenter when State of Center is updated.
 recenterMap() {
     const map = this.map;
@@ -154,6 +196,7 @@ recenterMap() {
     )
   }
 }
+
 MapGoogle.propTypes = {
   google: PropTypes.object,
   zoom: PropTypes.number,
@@ -163,7 +206,6 @@ MapGoogle.propTypes = {
   displayDirections: PropTypes.bool,
   origin: PropTypes.object,
   destination: PropTypes.object,
-  onMove: PropTypes.func
 
 }
 MapGoogle.defaultProps = {
@@ -176,7 +218,6 @@ MapGoogle.defaultProps = {
   origin: { lat: 38.6640092, lng: -122.9342897 },
   destination: { lat: 37.759703, lng: -122.428093 },
   waypoints: [],
-  onMove: function() { console.log(" You've Moved! ")}
 
 }
 export default MapGoogle;
