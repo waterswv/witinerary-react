@@ -5,6 +5,9 @@ import MapMarker from './MapMarker';
 
 const mykey = 'AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q';
 export class MapsContainer extends Component {
+  handleClick(){
+    console.log("You Clicked the Marker")
+  }
   render() {
     if (!this.props.loaded) {
       return <div>Loading...</div>
@@ -27,7 +30,7 @@ export class MapsContainer extends Component {
         }else{
           wayptDirections.push({location: pos});
         }
-      return (<MapMarker key={index+1} position={pos} />);
+      return (<MapMarker onClick={this.handleClick} key={index+1} title={vineyard.name} position={pos} />);
     });
 
     return (
