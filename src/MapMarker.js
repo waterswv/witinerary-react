@@ -19,7 +19,8 @@ export class MapMarker extends Component {
 
     const pref = {
         map: map,
-        position: position
+        position: position,
+        title: this.props.title
       };
       this.marker = new google.maps.Marker(pref);
   }
@@ -30,10 +31,11 @@ export class MapMarker extends Component {
 
 MapMarker.propTypes = {
   position: PropTypes.object,
-  map: PropTypes.object
+  map: PropTypes.object,
+
 }
 
 MapMarker.defaultProps = {
-
+  title: 'Vineyard'
 }
 export default MapMarker;

@@ -83,6 +83,17 @@ export class MapGoogle extends Component {
         zoom: zoom
       });
       this.map = new maps.Map(node, mapConfig);
+
+      let centerChangedTimeout;
+      this.map.addListener('dragend', (evt) => {
+        if (centerChangedTimeout) {
+          clearTimeout(centerChangedTimeout);
+          centerChangedTimeout = null;
+        }
+        centerChangedTimeout = setTimeout(() => {
+          this.props.onMove(this.map);
+        }, 0);
+      })
   }
 }
 // Using Google Maps .panTo method to recenter when State of Center is updated.
@@ -151,7 +162,8 @@ MapGoogle.propTypes = {
   displayMap: PropTypes.bool,
   displayDirections: PropTypes.bool,
   origin: PropTypes.object,
-  destination: PropTypes.object
+  destination: PropTypes.object,
+  onMove: PropTypes.func
 
 }
 MapGoogle.defaultProps = {
@@ -163,7 +175,8 @@ MapGoogle.defaultProps = {
   displayDirections: false,
   origin: { lat: 38.6640092, lng: -122.9342897 },
   destination: { lat: 37.759703, lng: -122.428093 },
-  waypoints: []
+  waypoints: [],
+  onMove: function() { console.log(" You've Moved! ")}
 
 }
 export default MapGoogle;

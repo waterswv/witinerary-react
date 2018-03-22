@@ -27,7 +27,7 @@ export class MapsContainer extends Component {
         }else{
           wayptDirections.push({location: pos});
         }
-      return (<MapMarker key={index+1} position={pos} />);
+      return (<MapMarker key={index+1} title={vineyard.name} position={pos} />);
     });
 
     return (
