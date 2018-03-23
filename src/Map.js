@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './Map.css';
-import NavBar from './NavBar';
 import Vineyards from './Vineyards';
 import {Tab} from './Tab'
 import MapsContainer from './MapsContainer';
@@ -168,7 +167,7 @@ class Map extends Component {
     return (
 
       <div>
-        <NavBar />
+
         <div className='row'>
           <div className='col-5'>
             <div className='title'>{this.state.maps[0].title}</div>
