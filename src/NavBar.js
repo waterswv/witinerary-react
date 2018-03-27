@@ -3,23 +3,29 @@ import './NavBar.css';
 import Map from './Map';
 import App from './App';
 
+
 import {
   BrowserRouter as Router,
   Route,
   Link,
   Switch,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 
+
 class NavBar extends Component {
+
+
   render() {
     let style = {float: 'right'};
+
 
     return (
     <Router>
       <div className="navbar">
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><Link to='/' ClassName='logo'><i className="small material-icons">whatshot</i> Wine Tripping</Link></li>
+          <li><Link to='/' className='logo'><i className="small material-icons">whatshot</i> Wine Tripping</Link></li>
           <li style={style}><Link to="/signup">Sign Up</Link></li>
           <li style={style}><Link to="/login">Login</Link></li>
           <li style={style}><Link to="/map">Current Map</Link></li>
@@ -28,7 +34,7 @@ class NavBar extends Component {
 
         <Route exact path="/" component={App} />
         <Route path="/signup" component={ComingSoon} />
-        <Route path="/login" component={ComingSoon} />
+        <Route exact path="/login" render={(props) => <Map mapID={'5a888fbb3dec7f7002c9a4aa'} {...props}/>} />
         <Route path="/map" component={Map} />
         <Route path="/wineries" component={ComingSoon} />
       </div>
@@ -38,6 +44,9 @@ class NavBar extends Component {
   );
   }
 }
-const ComingSoon = () => {return <h1>Coming Soon!</h1>}
+const ComingSoon = () => {return <h1>Coming Soon!</h1>};
+
+
+
 
 export default NavBar;

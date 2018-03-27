@@ -3,9 +3,9 @@ import './Map.css';
 import Vineyards from './Vineyards';
 import {Tab} from './Tab'
 import MapsContainer from './MapsContainer';
+import PropTypes from 'prop-types';
 
-
-
+const mapAPI = 'http://localhost:8000/api/map/';
 
 class Map extends Component {
 
@@ -133,9 +133,9 @@ class Map extends Component {
     fetch('http://localhost:8000/api/winery')
       .then((response) => response.json())
         .then((wineries) => this.setState({theWineries: wineries}))
-    fetch('http://localhost:8000/api/map')
+    fetch(mapAPI + this.props.mapID)
       .then((response) => response.json())
-        .then((maps) => this.setState({maps: maps.data, selectedWineries: maps.data[0].wineries}))
+        .then((maps) => this.setState({maps: maps, selectedWineries: maps.wineries}))
 
   }
 
@@ -170,7 +170,7 @@ class Map extends Component {
 
         <div className='row'>
           <div className='col-5'>
-            <div className='title'>{this.state.maps[0].title}</div>
+            <div className='title'>{this.state.maps.title}</div>
           <div className='map-card'>
             <div className='map-tabs'>
               <Tab
@@ -265,7 +265,13 @@ class Map extends Component {
   );
   }
 }
+Map.propTypes = {
+  mapID: PropTypes.string
+}
 
+Map.defaultProps = {
+  mapID: '5a888fbb3dec7f7002c9a4a9'
+}
 export default Map;
 // TODO:
 // TODO: Add a map function component to place MAP on a spot on the page
