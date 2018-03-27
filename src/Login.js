@@ -11,7 +11,7 @@ class Login extends Component {
 
       <div className="login" >
 
-        <button onClick={this.handleClick}>{this.props.isLoggedIn ? 'Logout' : 'Login'}</button>
+        <button onClick={this.handleClick}>Login</button>
 
       </div>
 
