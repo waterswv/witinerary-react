@@ -20,13 +20,11 @@ class SearchVineyards extends Component {
         .then((vineyards) => this.setState({vineyards: vineyards}))
   }
   render() {
-    let vineyards = this.state.vineyards.map((vineyard, index) => {
+    let vineyards = this.state.vineyards.map((props, vineyard, index) => {
       return (
         <Vineyards
           key={index}
-          name={vineyard.name}
-          description={vineyard.description}
-          hours={vineyard.hours}
+          {...props}
         />
       )
     });
