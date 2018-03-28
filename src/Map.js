@@ -5,6 +5,7 @@ import {Tab} from './Tab'
 import MapsContainer from './MapsContainer';
 import TripDetails from './TripDetails';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 const mapAPI = 'http://localhost:8000/api/map/';
 
@@ -234,7 +235,7 @@ class Map extends Component {
               <Tab
                 value={3}
                 onTabClick={this.handleClick}
-                name={'Add-ons'}
+                name={'Partners'}
                 tabs={this.state.tabs.tabthree}
               />
 
@@ -249,8 +250,20 @@ class Map extends Component {
               {vineyards}
             </span>
             <span className="active" style={this.state.style.three}>
-              <h3>Available Add-ons</h3>
-              Coming Soon
+              <div>
+                <h5>Overnights</h5>
+                <Link style={{color: 'black'}} target='blank' to='http://www.airbnb.com'>AirBnB</Link>
+                <Link style={{color: 'black'}} target='blank' to='http://www.vrbo.com'>VRBO</Link>
+              </div>
+              <div>
+                <h5>Restaurants</h5>
+                <Link style={{color: 'black'}} target='blank' to='http://www.opentable.com'>OpenTable</Link>
+                <Link style={{color: 'black'}} target='blank' to='http://www.yelp.com'>Yelp</Link>
+              </div>
+              <div>
+                <h5>Wine Tours</h5>
+                <Link style={{color: 'black'}} target='blank' to='http://www.platypustours.com'>Platypus Tours</Link>
+              </div>
             </span>
 
 
