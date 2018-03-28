@@ -3,6 +3,7 @@ import './NavBar.css';
 import Map from './Map';
 import App from './App';
 import Login from './Login';
+import SearchVineyards from './SearchVineyards';
 
 
 import {
@@ -40,13 +41,13 @@ class NavBar extends Component {
           { !this.state.isLoggedIn ? <li style={style}><Link to="/signup">Sign Up</Link></li> : null}
           { this.state.isLoggedIn ? (<li style={style}><a onClick={this.handleClick}>Logout</a></li>) : (<li style={style}><Link to="/login">Login</Link></li>)}
           <li style={style}><Link to="/map">Current Map</Link></li>
-          <li style={style}><Link to="/wineries">Wineries</Link></li>
+          <li style={style}><Link to="/wineries">Search Wineries</Link></li>
       </ul>
 
         <Route exact path="/" component={App} />
         <Route path="/signup" component={ComingSoon} />
         <Route exact path="/login" render={(props) => <Login onLogInClick={this.handleClick} {...props}/>} />
-        <Route exact path="/wineries" render={(props) => <Map mapID={'5a888fbb3dec7f7002c9a4aa'} {...props}/>} />
+        <Route exact path="/wineries" component={SearchVineyards} />
         <Route path="/map" component={Map} />
       </div>
 
