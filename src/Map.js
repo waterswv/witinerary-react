@@ -142,24 +142,20 @@ class Map extends Component {
 
   render() {
       // Generate Vineyard Component for all available Vineyards availbe for Itinerary ... TODO: refactor to remove alreayd added
-      let vineyards = this.state.theWineries.map((winery, index) => {
+      let vineyards = this.state.theWineries.map((props, winery, index) => {
         return (
           <Vineyards
             key={index}
-            name={winery.name}
-            description={winery.description}
-            hours={winery.hours}
+            {...props}
           />
         )
       });
       // Generate Vineyard Component for those currently on Itinerary
-      let selectedVineyards = this.state.selectedWineries.map((winery, index) => {
+      let selectedVineyards = this.state.selectedWineries.map((props, winery, index) => {
         return (
           <Vineyards
             key={index}
-            name={winery.name}
-            description={winery.description}
-            hours={winery.hours}
+            {...props}
           />
         )
       });
