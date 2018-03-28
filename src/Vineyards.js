@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './Vineyards.css';
+import Popup from 'reactjs-popup';
+import Footer from './Footer';
 
 class Vineyards extends Component {
 
@@ -14,7 +16,16 @@ class Vineyards extends Component {
         </div>
         <div className='heading'>
           <p className='more-info'>{'415-234-8976'}</p>
-          <p className='more-info'><span> More Info </span></p>
+          <p className='more-info'>
+            <span>
+              <Popup
+                trigger={<span>More Info</span>}
+                modal
+                closeOnDocumentClick>
+                <Footer />
+              </Popup>
+            </span>
+          </p>
           <p className='add-winery'><span> Add Me </span></p>
         </div>
       </div>
