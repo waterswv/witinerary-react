@@ -1,0 +1,26 @@
+.trip-details{
+
+}
+.title-text{
+  text-decoration: underline;
+}
+img {
+  height: 100px;
+  width: 100px;
+}
+.col-12 .social-networks {
+  margin: 5px;
+  width: 100%;
+  text-align: center;
+}
+.social-networks span {
+  margin: 5px;
+  padding: 10px;
+}
+.spacer{
+  height: 175px;
+}
+.social-networks span:hover {
+  background-color: lightgrey;
+  border-radius: 5px;
+}
