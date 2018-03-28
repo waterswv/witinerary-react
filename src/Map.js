@@ -3,6 +3,7 @@ import './Map.css';
 import Vineyards from './Vineyards';
 import {Tab} from './Tab'
 import MapsContainer from './MapsContainer';
+import TripDetails from './TripDetails';
 import PropTypes from 'prop-types';
 
 const mapAPI = 'http://localhost:8000/api/map/';
@@ -208,7 +209,11 @@ class Map extends Component {
                   />
               </div>
               <div className="active" style={this.state.mapstyle.three}>
-                <h3>Trip Overview</h3>
+                <TripDetails
+                  scheduleDate={this.state.maps.scheduleDate}
+                  startTime={this.state.maps.startTime}
+                  wineRegion={this.state.maps.wineRegion}
+                  />
               </div>
           </div>
         </div>
