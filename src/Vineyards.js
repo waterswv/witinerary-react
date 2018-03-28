@@ -14,8 +14,8 @@ class Vineyards extends Component {
         </div>
         <div className='heading'>
           <p className='more-info'>{'415-234-8976'}</p>
-          <p className='more-info'><a href='#'> {'More Info'}</a></p>
-          <p className='add-winery'><a href='#'>{'Add Me'}</a></p>
+          <p className='more-info'><span> More Info </span></p>
+          <p className='add-winery'><span> Add Me </span></p>
         </div>
       </div>
     );

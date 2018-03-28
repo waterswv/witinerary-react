@@ -13,17 +13,6 @@
   width: 30%;
   text-align: left;
 }
-p a {
-  margin: 10px;
-  padding: 10px;
-  font-size: 15px;
-  color: orange;
-  text-decoration: none;
-
-}
-a:hover{
-  background-color: lightgrey;
-}
 .vineyards:hover{
   box-shadow: 1px 1px 5px grey;
 }
@@ -33,6 +22,19 @@ a:hover{
   color: orange;
   font-size: 15px;
 }
+p span {
+  margin: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: orange;
+  text-decoration: none;
+
+}
+p span:hover{
+  background-color: lightgrey;
+  text-decoration: underline;
+}
+
 .add-winery {
   display: flex;
   align-content: end;
