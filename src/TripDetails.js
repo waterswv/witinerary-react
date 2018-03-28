@@ -24,7 +24,7 @@ class TripDetails extends Component {
           <div className='col-12'>
             <div className='varietals'><span className='title-text'><b>Varietals:</b></span> [Pinot Noir, Chardonnay, Pinot Gris, Grenache] </div>
             <div className='spacer'></div>
-            <div className='social-networks'><span className='title-text'><b>Share:</b></span> <span><i class="fas fa-envelope fa-lg"></i></span> <span><i class="fab fa-snapchat-ghost fa-lg"></i></span> <span><i class="fab fa-instagram fa-lg"></i></span> <span><i class="fab fa-twitter fa-lg"></i></span> </div>
+            <div className='social-networks'><span className='title-text'><b>Share:</b></span> <span><i className="fas fa-envelope fa-lg"></i></span> <span><i className="fab fa-snapchat-ghost fa-lg"></i></span> <span><i className="fab fa-instagram fa-lg"></i></span> <span><i className="fab fa-twitter fa-lg"></i></span> </div>
           </div>
         </div>
       </div>

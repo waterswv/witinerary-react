@@ -37,7 +37,7 @@ class NavBar extends Component {
     <Router>
       <div className="navbar">
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><Link to='/' className='logo'><i className="small material-icons">whatshot</i> Wine Tripping</Link></li>
+          <li><Link to='/' className='logo'><i className="fas fa-wine-glass fa-lg"></i> Wine Tripping</Link></li>
           { !this.state.isLoggedIn ? <li style={style}><Link to="/signup">Sign Up</Link></li> : null}
           { this.state.isLoggedIn ? (<li style={style}><a onClick={this.handleClick}>Logout</a></li>) : (<li style={style}><Link to="/login">Login</Link></li>)}
           <li style={style}><Link to="/map">Current Map</Link></li>
