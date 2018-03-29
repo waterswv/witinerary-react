@@ -45,12 +45,28 @@ class Map extends Component {
       }
       this.handleClick = this.handleClick.bind(this);
       this.handleAddWinery = this.handleAddWinery.bind(this);
+      this.handleDeleteWinery = this.handleDeleteWinery.bind(this);
   }
 
   handleAddWinery(wineryID){
     fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'PUT'})
       .then((response) => response.json())
-        .then((maps) => this.setState({maps: maps, selectedWineries: maps.wineries}))
+        .then((maps) => this.setState((prevState) => {
+          const newState = Object.assign({}, prevState);
+          newState.maps = maps;
+          newState.selectedWineries = maps.wineries;
+          return newState;
+        }))
+  }
+  handleDeleteWinery(wineryID){
+    fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'DELETE'})
+      .then(response => response.json())
+        .then(maps => this.setState((prevState) => {
+          const newState = Object.assign({}, prevState);
+          newState.maps = maps;
+          newState.selectedWineries = maps.wineries;
+          return newState;
+        }))
   }
 
   handleClick(id){
@@ -155,6 +171,7 @@ class Map extends Component {
             key={index}
             value={props._id}
             onWineryClick={this.handleAddWinery}
+            onWinemap={false}
           />
         )
       });
@@ -165,7 +182,8 @@ class Map extends Component {
             {...props}
             key={index}
             value={props._id}
-            onWineryClick={this.handleAddWinery}
+            onDeleteWineryClick={this.handleDeleteWinery}
+            onWinemap={true}
           />
         )
       });
@@ -213,7 +231,7 @@ class Map extends Component {
 
                   />
               </div>
-              <div className="active" style={this.state.mapstyle.three}>
+              <div className="trip-details" style={this.state.mapstyle.three}>
                 <TripDetails
                   scheduleDate={this.state.maps.scheduleDate}
                   startTime={this.state.maps.startTime}
@@ -246,13 +264,13 @@ class Map extends Component {
                 tabs={this.state.tabs.tabthree}
               />
             </div>
-            <span  className="active" style={this.state.style.one}>
+            <div  className="active" style={this.state.style.one}>
               {selectedVineyards}
-            </span>
-            <span className="active" style={this.state.style.two}>
+            </div>
+            <div className="active" style={this.state.style.two}>
               {vineyards}
-            </span>
-            <span className="active" style={this.state.style.three}>
+            </div>
+            <div className="active" style={this.state.style.three}>
               <div>
                 <h5>Overnights</h5>
                 <Link style={{color: 'black'}} target='blank' to='http://www.airbnb.com'>AirBnB</Link>
@@ -267,7 +285,7 @@ class Map extends Component {
                 <h5>Wine Tours</h5>
                 <Link style={{color: 'black'}} target='blank' to='http://www.platypustours.com'>Platypus Tours</Link>
               </div>
-            </span>
+            </div>
 
           </div>
         </div>

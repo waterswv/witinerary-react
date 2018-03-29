@@ -7,6 +7,9 @@ class Vineyards extends Component {
   handleAddWinery = () => {
     this.props.onWineryClick(this.props.value)
   }
+  handleDeleteWinery = () => {
+    this.props.onDeleteWineryClick(this.props.value)
+  }
   render() {
     return (
 
@@ -34,7 +37,7 @@ class Vineyards extends Component {
               </Popup>
             </span>
           </p>
-          <p className='add-winery'><span onClick={this.handleAddWinery}>Add Me</span></p>
+          {!this.props.onWinemap ? <p className='add-winery'><span onClick={this.handleAddWinery}>Add Me</span></p> : <p className='delete-winery'><span onClick={this.handleDeleteWinery}>Delete Me</span></p>}
         </div>
       </div>
     );
