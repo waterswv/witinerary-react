@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import './Map.css';
 import Vineyards from './Vineyards';
-import {Tab} from './Tab'
+import {Tab} from './Tab';
 import MapsContainer from './MapsContainer';
 import TripDetails from './TripDetails';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-const mapAPI = 'http://localhost:8000/api/map/';
-
+const mapAPIs = {
+  mapAPI: 'http://localhost:8000/api/map/',
+  wineryAPI: 'http://localhost:8000/api/winery/',
+  addMapWinery: `http://localhost:8000/api/map/:map_id/winery/:winery_id`
+}
 class Map extends Component {
 
   constructor(props) {
@@ -41,7 +44,29 @@ class Map extends Component {
 
       }
       this.handleClick = this.handleClick.bind(this);
+      this.handleAddWinery = this.handleAddWinery.bind(this);
+      this.handleDeleteWinery = this.handleDeleteWinery.bind(this);
+  }
 
+  handleAddWinery(wineryID){
+    fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'PUT'})
+      .then((response) => response.json())
+        .then((maps) => this.setState((prevState) => {
+          const newState = Object.assign({}, prevState);
+          newState.maps = maps;
+          newState.selectedWineries = maps.wineries;
+          return newState;
+        }))
+  }
+  handleDeleteWinery(wineryID){
+    fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'DELETE'})
+      .then(response => response.json())
+        .then(maps => this.setState((prevState) => {
+          const newState = Object.assign({}, prevState);
+          newState.maps = maps;
+          newState.selectedWineries = maps.wineries;
+          return newState;
+        }))
   }
 
   handleClick(id){
@@ -123,19 +148,15 @@ class Map extends Component {
         return newState;
       });
     }
-
     console.log('This is the id passed down ', id);
-
   }
-
-
 
   componentDidMount(){
 
     fetch('http://localhost:8000/api/winery')
       .then((response) => response.json())
         .then((wineries) => this.setState({theWineries: wineries}))
-    fetch(mapAPI + this.props.mapID)
+    fetch(mapAPIs.mapAPI + this.props.mapID)
       .then((response) => response.json())
         .then((maps) => this.setState({maps: maps, selectedWineries: maps.wineries}))
 
@@ -143,24 +164,29 @@ class Map extends Component {
 
   render() {
       // Generate Vineyard Component for all available Vineyards availbe for Itinerary ... TODO: refactor to remove alreayd added
-      let vineyards = this.state.theWineries.map((props, winery, index) => {
+      let vineyards = this.state.theWineries.map((props, index, wineries) => {
         return (
           <Vineyards
-            key={index}
             {...props}
+            key={index}
+            value={props._id}
+            onWineryClick={this.handleAddWinery}
+            onWinemap={false}
           />
         )
       });
       // Generate Vineyard Component for those currently on Itinerary
-      let selectedVineyards = this.state.selectedWineries.map((props, winery, index) => {
+      let selectedVineyards = this.state.selectedWineries.map((props, index, wineries) => {
         return (
           <Vineyards
-            key={index}
             {...props}
+            key={index}
+            value={props._id}
+            onDeleteWineryClick={this.handleDeleteWinery}
+            onWinemap={true}
           />
         )
       });
-
 
     return (
 
@@ -190,7 +216,7 @@ class Map extends Component {
                 tabs={this.state.maptabs.tabthree}
               />
             </div>
-            <div style={this.state.mapstyle.one}>
+            <div className='map-parent' style={this.state.mapstyle.one}>
               <MapsContainer
                 vineyards={this.state.selectedWineries}
                 displayMap={true}
@@ -205,7 +231,7 @@ class Map extends Component {
 
                   />
               </div>
-              <div className="active" style={this.state.mapstyle.three}>
+              <div className="trip-details" style={this.state.mapstyle.three}>
                 <TripDetails
                   scheduleDate={this.state.maps.scheduleDate}
                   startTime={this.state.maps.startTime}
@@ -219,7 +245,6 @@ class Map extends Component {
 
           <div className='map-card'>
             <div className='map-tabs'>
-
               <Tab
                 value={1}
                 onTabClick={this.handleClick}
@@ -238,18 +263,14 @@ class Map extends Component {
                 name={'Partners'}
                 tabs={this.state.tabs.tabthree}
               />
-
             </div>
-
-            <span  className="active" style={this.state.style.one}>
-
+            <div  className="active" style={this.state.style.one}>
               {selectedVineyards}
-            </span>
-            <span className="active" style={this.state.style.two}>
-
+            </div>
+            <div className="active" style={this.state.style.two}>
               {vineyards}
-            </span>
-            <span className="active" style={this.state.style.three}>
+            </div>
+            <div className="active" style={this.state.style.three}>
               <div>
                 <h5>Overnights</h5>
                 <Link style={{color: 'black'}} target='blank' to='http://www.airbnb.com'>AirBnB</Link>
@@ -264,17 +285,12 @@ class Map extends Component {
                 <h5>Wine Tours</h5>
                 <Link style={{color: 'black'}} target='blank' to='http://www.platypustours.com'>Platypus Tours</Link>
               </div>
-            </span>
-
-
-          </div>
-
+            </div>
 
           </div>
         </div>
-
-
       </div>
+    </div>
 
   );
   }

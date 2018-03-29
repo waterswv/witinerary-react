@@ -16,7 +16,7 @@ class VineyardModal extends Component {
             <div> <span className='phone'><b>Phone:</b></span>{this.props.contactPhone}</div>
             <div> <span className='email'><b>Email:</b></span>{this.props.contactEmail}</div>
           </div>
-          <div className='col-4'> <img src='./images/sonoma-map.png'/>
+          <div className='col-4'> <img src='./images/sonoma-map.png'alt='sonoma'/>
           </div>
         </div>
 

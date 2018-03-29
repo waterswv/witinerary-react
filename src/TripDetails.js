@@ -17,7 +17,7 @@ class TripDetails extends Component {
             <div> <span className='title-text'><b>End:</b> </span>{'Dukes on the Square'}</div>
             <div> <span className='title-text'><b>Region:</b></span> {this.props.wineRegion}</div>
           </div>
-          <div className='col-4'> <img src='./images/sonoma-map.png'/>
+          <div className='col-4'> <img src='./images/sonoma-map.png'alt='sonoma1'/>
           </div>
         </div>
         <div className='row'>

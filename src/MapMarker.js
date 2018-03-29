@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -36,7 +36,7 @@ export class MapMarker extends Component {
   }
 
   handleEvent(evt) {
-    
+
     return (e) => {
       const evtName = `on${camelize(evt)}`;
       if (this.props[evtName]) {

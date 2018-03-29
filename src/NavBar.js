@@ -9,10 +9,7 @@ import SearchVineyards from './SearchVineyards';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Switch,
-  Redirect,
-  withRouter
+  Link
 } from 'react-router-dom';
 
 

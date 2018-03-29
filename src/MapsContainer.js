@@ -34,7 +34,7 @@ export class MapsContainer extends Component {
     });
 
     return (
-      <div>
+      <div className='map-container'>
         <MapGoogle
           originDir={originDir}
           destDir={destDir}

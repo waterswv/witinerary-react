@@ -41,15 +41,27 @@
   text-align: center;
   text-decoration: underline;
 }
-img {
-  border-radius: 25px;
+.map-parent {
+/* Map Div in Map.js */
+}
+.map-container{
+  /* Map Div in MapsContainer.js */
+  height: 400px;
+}
+.trip-details, .the-directions, .active {
+  display: block;
+  overflow: auto;
+  height: 400px;
+  margin: 5px;
 }
 .mapforgoogle{
-  height: 400px;
+  /* Map Div in MapGoogle.js */
+  height: 100%;
   overflow: auto;
   margin: 5px;
 
 }
+
 
 .learning img {
   grid-area: map;
@@ -61,8 +73,11 @@ img {
   /* These 3 lines of CSS Center an IMG in a DIV  */
 }
 @media screen and (max-width: 800px){
-  #the-map, .active, .the-directions{
+  .map-container, .trip-details, .the-directions, .active{
     height: 350px;
+  }
+  .map-tabs{
+    overflow: auto;
   }
 }
 
@@ -72,41 +87,15 @@ img {
     [class*="col-"] {
         width: 100%;
     }
-    #the-map, .active, .the-directions{
+    .map-container, .trip-details, .the-directions, .active{
       height: 300px;
     }
 
 }
-.active, .the-directions {
-  display: block;
-  overflow: auto;
-  height: 400px;
-  margin: 5px;
-}
-.hidden {
-  display: none;
-}
 
-.my-map {
-}
 
-        /* These create a circle out of a blank div */
-        /* .circle {
-        	border: 2px solid #666666;
-        	border-radius: 50%;
-        	opacity: 0.6;
-        	width: 24px;
-        	height: 24px;
-
-        }
-        .circle.filled {
-        	background-color: #666666;
-        } */
 .map-card {
   box-shadow: 5px 5px 15px grey;
   border: 1px solid black;
   padding: 5px;
-}
-.map-tabs {
-
 }
