@@ -176,11 +176,11 @@ recenterMap() {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.google !== this.props.google) {
-
+        console.log(prevProps)
         if(this.props.displayMap)
-          {this.loadMap();}
+          {this.loadMap()}
         if(this.props.displayDirections)
-          {this.loadDirections();}
+          {this.loadDirections()}
 
     }
     if (prevState.currentLocation !== this.state.currentLocation) {

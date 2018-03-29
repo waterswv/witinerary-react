@@ -41,15 +41,21 @@
   text-align: center;
   text-decoration: underline;
 }
-img {
-  border-radius: 25px;
+.map-parent {
+/* Map Div in Map.js */
+}
+.map-container{
+  /* Map Div in MapsContainer.js */
+  height: 400px;
 }
 .mapforgoogle{
-  height: 400px;
+  /* Map Div in MapGoogle.js */
+  height: 100%;
   overflow: auto;
   margin: 5px;
 
 }
+
 
 .learning img {
   grid-area: map;

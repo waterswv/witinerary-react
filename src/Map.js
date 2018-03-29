@@ -149,7 +149,6 @@ class Map extends Component {
   render() {
       // Generate Vineyard Component for all available Vineyards availbe for Itinerary ... TODO: refactor to remove alreayd added
       let vineyards = this.state.theWineries.map((props, index, wineries) => {
-        console.log(props)
         return (
           <Vineyards
             {...props}
@@ -199,7 +198,7 @@ class Map extends Component {
                 tabs={this.state.maptabs.tabthree}
               />
             </div>
-            <div style={this.state.mapstyle.one}>
+            <div className='map-parent' style={this.state.mapstyle.one}>
               <MapsContainer
                 vineyards={this.state.selectedWineries}
                 displayMap={true}
