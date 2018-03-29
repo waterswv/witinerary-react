@@ -48,7 +48,7 @@ class Map extends Component {
   }
 
   handleAddWinery(wineryID){
-    fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID)
+    fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'PUT'})
       .then((response) => response.json())
         .then((maps) => this.setState({maps: maps, selectedWineries: maps.wineries}))
   }
@@ -152,10 +152,10 @@ class Map extends Component {
         console.log(props)
         return (
           <Vineyards
+            {...props}
             key={index}
             value={props._id}
             onWineryClick={this.handleAddWinery}
-            
           />
         )
       });
@@ -163,10 +163,10 @@ class Map extends Component {
       let selectedVineyards = this.state.selectedWineries.map((props, index, wineries) => {
         return (
           <Vineyards
+            {...props}
             key={index}
             value={props._id}
             onWineryClick={this.handleAddWinery}
-            {...props}
           />
         )
       });

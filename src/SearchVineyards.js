@@ -23,10 +23,10 @@ class SearchVineyards extends Component {
     let vineyards = this.state.vineyards.map((props, index, vineyards) => {
       return (
         <Vineyards
+          {...props}
           key={index}
           value={props._id}
           onWineryClick={this.handleAddWinery}
-          {...props}
         />
       )
     });
