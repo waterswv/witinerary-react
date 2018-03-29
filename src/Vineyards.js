@@ -4,7 +4,9 @@ import Popup from 'reactjs-popup';
 import VineyardModal from './VineyardModal';
 
 class Vineyards extends Component {
-
+  handleAddWinery = () => {
+    this.props.onWineryClick(this.props.value)
+  }
   render() {
     return (
 
@@ -32,7 +34,7 @@ class Vineyards extends Component {
               </Popup>
             </span>
           </p>
-          <p className='add-winery'><span> Add Me </span></p>
+          <p className='add-winery'><span onClick={this.handleAddWinery}>Add Me</span></p>
         </div>
       </div>
     );
