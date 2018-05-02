@@ -187,6 +187,7 @@ class Map extends Component {
           />
         )
       });
+      let wayptDirections = this.state.selectedWineries.map((vineyard) => {return {location: {lat: vineyard.maps.lat, lng: vineyard.maps.lng}}} );
 
     return (
 
@@ -221,6 +222,7 @@ class Map extends Component {
                 vineyards={this.state.selectedWineries}
                 displayMap={true}
                 displayDirections={false}
+                wayptDirections={wayptDirections}
               />
             </div>
               <div className="the-directions" style={this.state.mapstyle.two}>
@@ -300,7 +302,7 @@ Map.propTypes = {
 }
 
 Map.defaultProps = {
-  mapID: '5a888fbb3dec7f7002c9a4a9'
+  mapID: '5ac3c49cdd7acc685ca6fe28'
 }
 export default Map;
 // TODO:
