@@ -20,7 +20,7 @@ export class MapGoogle extends Component {
         lng: lng
       },
       reqst: {
-        origin: this.props.originDir ||origin,
+        origin: this.props.originDir || origin,
         destination: this.props.destDir || destination,
         waypoints: this.props.wayptDirections || waypoints
       }

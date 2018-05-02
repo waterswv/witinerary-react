@@ -19,7 +19,7 @@ export class MapsContainer extends Component {
     let markers = this.props.vineyards.map((vineyard, index) => {
       let pos = {
         lat: vineyard.maps.lat,
-        lng: vineyard.maps.long
+        lng: vineyard.maps.lng
       }
       // place lat lng data into direction prop variables
         if(index === 0)
@@ -38,7 +38,7 @@ export class MapsContainer extends Component {
         <MapGoogle
           originDir={originDir}
           destDir={destDir}
-          wayptDirections={wayptDirections}
+          wayptDirections={this.props.wayptDirections}
           displayMap={this.props.displayMap}
           displayDirections={this.props.displayDirections}
           google={this.props.google}>
