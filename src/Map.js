@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import './Map.css';
 import Vineyards from './Vineyards';
 import {Tab} from './Tab';
-import MapsContainer from './MapsContainer';
 import TripDetails from './TripDetails';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {GoogleApiWrapper} from 'google-maps-react';
+import MapGoogle from './MapGoogle';
+import MapMarker from './MapMarker';
 
+const mykey = 'AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q';
 const mapAPIs = {
   mapAPI: 'http://localhost:8000/api/map/',
   wineryAPI: 'http://localhost:8000/api/winery/',
@@ -67,6 +70,10 @@ class Map extends Component {
           newState.selectedWineries = maps.wineries;
           return newState;
         }))
+  }
+
+  handleMarkerClick(){
+    console.log("You Clicked the Marker")
   }
 
   handleClick(id){
@@ -189,49 +196,64 @@ class Map extends Component {
       });
       let wayptDirections = this.state.selectedWineries.map((vineyard) => {return {location: {lat: vineyard.maps.lat, lng: vineyard.maps.lng}}} );
 
+      let markers = this.state.selectedWineries.map((vineyard, index) => {
+        let pos = {
+          lat: vineyard.maps.lat,
+          lng: vineyard.maps.lng
+        }
+        return (<MapMarker onClick={this.handleMarkerClick} key={index+1} title={vineyard.name} position={pos} />);
+      });
+
     return (
 
       <div>
 
-        <div className='row'>
-          <div className='col-5'>
-            <div className='title'>{this.state.maps.title}</div>
-          <div className='map-card'>
-            <div className='map-tabs'>
-              <Tab
-                value={4}
-                onTabClick={this.handleClick}
-                name={'Map'}
-                tabs={this.state.maptabs.tabone}
+          <div className='row'>
+            <div className='col-5'>
+              <div className='title'>{this.state.maps.title}</div>
+            <div className='map-card'>
+              <div className='map-tabs'>
+                <Tab
+                  value={4}
+                  onTabClick={this.handleClick}
+                  name={'Map'}
+                  tabs={this.state.maptabs.tabone}
+                  />
+                <span className='the-span'><Tab
+                  value={5}
+                  onTabClick={this.handleClick}
+                  name={'Directions'}
+                  tabs={this.state.maptabs.tabtwo}
+                /></span>
+                <Tab
+                  value={6}
+                  onTabClick={this.handleClick}
+                  name={'Trip Details'}
+                  tabs={this.state.maptabs.tabthree}
                 />
-              <span className='the-span'><Tab
-                value={5}
-                onTabClick={this.handleClick}
-                name={'Directions'}
-                tabs={this.state.maptabs.tabtwo}
-              /></span>
-              <Tab
-                value={6}
-                onTabClick={this.handleClick}
-                name={'Trip Details'}
-                tabs={this.state.maptabs.tabthree}
-              />
-            </div>
-            <div className='map-parent' style={this.state.mapstyle.one}>
-              <MapsContainer
-                vineyards={this.state.selectedWineries}
-                displayMap={true}
-                displayDirections={false}
-                wayptDirections={wayptDirections}
-              />
-            </div>
+              </div>
+              <div className='map-parent' style={this.state.mapstyle.one}>
+                <div className='map-container'>
+                  <MapGoogle
+                    displayMap={true}
+                    displayDirections={false}
+                    wayptDirections={wayptDirections}
+                    google={this.props.google}>
+                    {markers}
+                  </MapGoogle>
+                </div>
+              </div>
               <div className="the-directions" style={this.state.mapstyle.two}>
-                  <MapsContainer
-                    vineyards={this.state.selectedWineries}
+                <div>
+                  <MapGoogle
+                    originDir={this.props.origin}
+                    destDir={this.props.destination}
+                    wayptDirections={wayptDirections}
                     displayMap={false}
                     displayDirections={true}
-
-                  />
+                    google={this.props.google}>
+                  </MapGoogle>
+                </div>
               </div>
               <div className="trip-details" style={this.state.mapstyle.three}>
                 <TripDetails
@@ -302,9 +324,13 @@ Map.propTypes = {
 }
 
 Map.defaultProps = {
-  mapID: '5ac3c49cdd7acc685ca6fe28'
+  mapID: '5ac3c49cdd7acc685ca6fe28',
+  origin: { lat: 38.6640092, lng: -122.9342897 },
+  destination: { lat: 37.759703, lng: -122.428093 }
 }
-export default Map;
+export default GoogleApiWrapper({
+  apiKey: mykey
+})(Map);
 // TODO:
 // TODO: Add a map function component to place MAP on a spot on the page
 // => Call data
