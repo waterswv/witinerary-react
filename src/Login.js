@@ -21,3 +21,5 @@ class Login extends Component {
 }
 
 export default Login;
+
+/* for testing react-scripts test --env=jsdom */
