@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './SearchVineyards.css';
 import Vineyards from './Vineyards';
+import {Collection, Card, } from 'react-materialize';
 
 class SearchVineyards extends Component {
 
@@ -36,7 +37,11 @@ class SearchVineyards extends Component {
         <div className='search-bar'>
         <input label='search' placeholder='Enter Search Here'></input>
         </div>
-        {vineyards}
+        <Card header={<b>Vineyards in Dry Creek</b>}>
+        <Collection>
+          {vineyards}
+        </Collection>
+      </Card>
       </div>
     );
   }
