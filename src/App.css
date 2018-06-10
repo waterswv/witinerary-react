@@ -1,26 +1,9 @@
 html {
   font-family: 'Raleway', sans-serif;
 }
-.wrapper {
-    		display: grid;
-    		grid-template-columns: 5% 20% 25% 25% 20% 5%;
-        grid-template-rows: [navbar] 50px auto auto;
-        grid-template-areas:
-        "navbar navbar navbar navbar navbar navbar"
-        ". trip-title map map filters ."
-        ". vineyards map map third-party .";
 
-    	}
 
-.map, .directions img {
 
-  max-width: 100%;
-  /* These 3 lines of CSS Center an IMG in a DIV  */
-  border: none;
-  display: block;
-  margin: 0 auto;
-  /* These 3 lines of CSS Center an IMG in a DIV  */
-}
 
 .hero-image{
     background-image: url('/images/landscape-nature-grass-marsh-light-sun-535861-pxhere.jpg');
@@ -37,61 +20,3 @@ html {
   text-align: center;
   font-family: 'Raleway', sans-serif;
 }
-.navbar {
-        grid-area: navbar;
-
-      }
-      .navbar ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #B88AAC;
-      }
-
-      .navbar li {
-          float: left;
-          height: 55px;
-      }
-      .navbar a {
-          display: block;
-          color: white;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
-      }
-
-      /* Change the link color to #111 (black) on hover */
-       .navbar li:hover {
-          background-color: #936e89;
-      }
-
-      .logo{
-        font-size: 20px;
-      }
-
-      @media screen and (max-width: 600px) {
-        .navbar {
-          height: 60px;
-          background: #B88AAC url(https://use.fontawesome.com/releases/v5.0.8/svgs/solid/bars.svg) no-repeat 12%/12% 45%;
-
-        }
-
-        .navbar li {
-          display: none;
-        }
-
-        .navbar:hover {
-          background-image: none;
-
-        }
-        .navbar:hover .logo {
-          display: none;
-
-        }
-        .navbar:hover li {
-          display: inline-block;
-          margin: 0 0 5px;
-          float: left;
-        }
-      }

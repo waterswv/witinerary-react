@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './Map.css';
 import Vineyards from './Vineyards';
-import TripDetails from './TripDetails';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {GoogleApiWrapper} from 'google-maps-react';
+import {Container, Row, Col, Button, Collection, CollectionItem, } from 'react-materialize';
 
 
 const mykey = 'AIzaSyDV5HMbW_2loRPhf5xa0IzXP5SfOP1TF-Q';
@@ -18,16 +18,10 @@ class Map extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      maps: [{}],
+      map: [],
       theWineries: [],
       selectedWineries: [],
       theDirections: [],
-      style: {
-        one: {display: 'block'},
-        two: {display: 'none'},
-        three: {display: 'none'}
-      },
-
 
       }
 
@@ -38,27 +32,23 @@ class Map extends Component {
   handleAddWinery(wineryID){
     fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'PUT'})
       .then((response) => response.json())
-        .then((maps) => this.setState((prevState) => {
+        .then((map) => this.setState((prevState) => {
           const newState = Object.assign({}, prevState);
-          newState.maps = maps;
-          newState.selectedWineries = maps.wineries;
+          newState.map = map;
+          newState.selectedWineries = map.wineries;
           return newState;
         }))
   }
   handleDeleteWinery(wineryID){
     fetch(mapAPIs.mapAPI + this.props.mapID + `/winery/` + wineryID, {method: 'DELETE'})
       .then(response => response.json())
-        .then(maps => this.setState((prevState) => {
+        .then(map => this.setState((prevState) => {
           const newState = Object.assign({}, prevState);
-          newState.maps = maps;
-          newState.selectedWineries = maps.wineries;
+          newState.map = map;
+          newState.selectedWineries = map.wineries;
           return newState;
         }))
   }
-
-
-
-
 
   componentDidMount(){
 
@@ -67,7 +57,7 @@ class Map extends Component {
         .then((wineries) => this.setState({theWineries: wineries}))
     fetch(mapAPIs.mapAPI + this.props.mapID)
       .then((response) => response.json())
-        .then((maps) => this.setState({maps: maps, selectedWineries: maps.wineries}))
+        .then((map) => this.setState({map: map, selectedWineries: map.wineries}))
 
   }
 
@@ -97,52 +87,18 @@ class Map extends Component {
         )
       });
 
+      const { map } = this.state;
 
 
     return (
 
       <div>
-
-          <div className='row'>
-            <div className='col-5'>
-              <div className='title'>{this.state.maps.title}</div>
-            <div className='map-card'>
-              <div className='map-tabs'>
-
-              </div>
-              <div className='map-parent' >
-                <div className='map-container'>
-
-                </div>
-              </div>
-              <div className="the-directions" >
-                <div>
-
-                </div>
-              </div>
-              <div className="trip-details" >
-                <TripDetails
-                  scheduleDate={this.state.maps.scheduleDate}
-                  startTime={this.state.maps.startTime}
-                  wineRegion={this.state.maps.wineRegion}
-                  />
-              </div>
-          </div>
-        </div>
-          <div className='col-7'>
-            <div className='title'>Some Title...</div>
-
-          <div className='map-card'>
-            <div className='map-tabs'>
-
-            </div>
-            <div  className="active" style={this.state.style.one}>
-              {selectedVineyards}
-            </div>
-            <div className="active" style={this.state.style.two}>
-              {vineyards}
-            </div>
-            <div className="active" style={this.state.style.three}>
+        
+        <Container>
+          <Row>
+            <Col><Button floating large className='red' waves='light' icon='add' /></Col>
+          </Row>
+        </Container>
               <div>
                 <h5>Overnights</h5>
                 <Link style={{color: 'black'}} target='blank' to='http://www.airbnb.com'>AirBnB</Link>
@@ -157,11 +113,9 @@ class Map extends Component {
                 <h5>Wine Tours</h5>
                 <Link style={{color: 'black'}} target='blank' to='http://www.platypustours.com'>Platypus Tours</Link>
               </div>
-            </div>
 
-          </div>
-        </div>
-      </div>
+
+
     </div>
 
   );

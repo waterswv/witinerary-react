@@ -3,6 +3,7 @@ import './App.css';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import MapForm from './MapForm';
+import { Navbar, NavItem, Icon, } from 'react-materialize';
 
 
 class App extends Component {
@@ -21,25 +22,15 @@ class App extends Component {
     this.props.history.replace(`/${route}`)
   }
   render() {
-    let style = {float: 'right'};
-    let mainStyle = {height: '100vh'}
 
     return (
       <div>
-      <div className="navbar">
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><Link to='/' className='logo'><i className="fas fa-wine-glass fa-lg"></i> Wine Tripping</Link></li>
-          { !this.state.isLoggedIn ? <li style={style}><Link to="/signup">Sign Up</Link></li> : null}
-          { this.state.isLoggedIn ? (<li style={style}><a onClick={this.handleClick}>Logout</a></li>) : (<li style={style}><Link to="/login">Login</Link></li>)}
-          <li style={style}><Link to="/map">Current Map</Link></li>
-          <li style={style}><Link to="/search">Search Wineries</Link></li>
-      </ul>
-    </div>
-      <div className="hero-image home-hero" style={mainStyle}>
-      <br></br>
-        <p>Get lost amongst the Vines. <br></br> Wine country on your schedule</p>
-        <MapForm />
-      </div>
+        <Navbar className="purple darken-1" brand={<Link to='/' className='logo'><i style={{margin: "5px"}} className="fas fa-wine-glass fa-lg"></i> Wine Tripping</Link>} right>
+          <li>{ !this.state.isLoggedIn ? <Link to="/signup">Sign Up</Link> : null}</li>
+          <li><Link to="/search"><Icon>search</Icon></Link></li>
+          <li>{ this.state.isLoggedIn ? (<a onClick={this.handleClick}>Logout</a>) : (<Link to="/login">Login</Link>)}</li>
+          <li><Link to="/map">Current Map</Link></li>
+        </Navbar>
       </div>
 
 
@@ -47,6 +38,5 @@ class App extends Component {
   }
 }
 
-const ComingSoon = () => {return <h1>Coming Soon!</h1>};
 
 export default App;
