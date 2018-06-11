@@ -1,8 +1,23 @@
 import React, {Component} from 'react';
 import './App.css';
 import { Link } from 'react-router-dom';
+import {HomepageLayout} from './Home';
 import MapForm from './MapForm';
-import { Navbar, NavItem, Icon, } from 'react-materialize';
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Responsive,
+  Segment,
+  Sidebar,
+  Visibility,
+} from 'semantic-ui-react';
 
 
 class App extends Component {
@@ -24,12 +39,7 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar className="purple darken-1" brand={<Link to='/' className='logo'><i style={{margin: "5px"}} className="fas fa-wine-glass fa-lg"></i> Wine Tripping</Link>} right>
-          <li>{ !this.state.isLoggedIn ? <Link to="/signup">Sign Up</Link> : null}</li>
-          <li><Link to="/search"><Icon>search</Icon></Link></li>
-          <li>{ this.state.isLoggedIn ? (<a onClick={this.handleClick}>Logout</a>) : (<Link to="/login">Login</Link>)}</li>
-          <li><Link to="/map">Current Map</Link></li>
-        </Navbar>
+        <HomepageLayout />
       </div>
 
 
